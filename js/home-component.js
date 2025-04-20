@@ -10,6 +10,10 @@ const Home = {
       })),
     };
   },
+  mounted() {
+    // Clear the randomlyShownTechniques list when home component loads
+    sessionStorage.clear("randomlyShownTechniques");
+  },
   template: `
     <div class="home-page">
       <h2>Welcome to the unofficial Shodan Exam Preparation Guide</h2>

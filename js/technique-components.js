@@ -17,7 +17,41 @@ const TechniqueFamilyPage = {
     showFamily() {
       // Hide the list if a technique detail is being viewed
       return !this.$route.params.technique;
-    }
+    },
+  },
+  methods: {
+    goToRandomTechnique() {
+      let randomlyShownTechniques = JSON.parse(
+        sessionStorage.getItem("randomlyShownTechniques") || "[]"
+      );
+      if (randomlyShownTechniques.length === this.techniques.length) {
+        // If all techniques have been shown, clear the list
+        randomlyShownTechniques = [];
+        sessionStorage.setItem("randomlyShownTechniques", JSON.stringify([]));
+      }
+      // Filter out already shown techniques
+      const unshownTechniques = this.techniques.filter(
+        (technique) => !randomlyShownTechniques.includes(technique.name)
+      );
+      if (unshownTechniques.length) {
+        const randomIndex = Math.floor(
+          Math.random() * unshownTechniques.length
+        );
+        const randomTechnique = unshownTechniques[randomIndex];
+        // Add the shown technique to the list
+        randomlyShownTechniques.push(randomTechnique.name);
+        sessionStorage.setItem(
+          "randomlyShownTechniques",
+          JSON.stringify(randomlyShownTechniques)
+        );
+        this.$router.push(
+          "/" +
+            this.family +
+            "/" +
+            encodeURIComponent(randomTechnique.name.toLowerCase())
+        );
+      }
+    },
   },
   template: `
     <div class="technique-page">
@@ -25,6 +59,9 @@ const TechniqueFamilyPage = {
         <router-link :to="'/'"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> Home</router-link>
         <h2>{{ title }}</h2>
         <p>{{ description }}</p>
+        <button @click="goToRandomTechnique" class="random-technique-btn">
+          Random Technique
+        </button>
         <div class="technique-list">
           <router-link
             v-for="technique in techniques"
@@ -47,24 +84,27 @@ const TechniqueDetailPage = {
   props: ["family", "technique"],
   data() {
     return {
-      videoExpanded: false
+      videoExpanded: false,
     };
   },
   computed: {
     familyData() {
       const family = techniqueData[this.family] || { techniques: [] };
-      console.log(family);
       return family;
     },
     techniqueData() {
       const family = techniqueData[this.family] || { techniques: [] };
-      return family.techniques.find(t => t.name.toLowerCase() === this.technique.toLowerCase()) || {};
-    }
+      return (
+        family.techniques.find(
+          (t) => t.name.toLowerCase() === this.technique.toLowerCase()
+        ) || {}
+      );
+    },
   },
   methods: {
     toggleVideo() {
       this.videoExpanded = !this.videoExpanded;
-    }
+    },
   },
   template: `
     <div class="technique-detail-page">
@@ -90,4 +130,3 @@ const TechniqueDetailPage = {
     </div>
   `,
 };
-

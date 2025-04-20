@@ -29,16 +29,19 @@ Visit the GitHub Pages site at: [https://YOUR-USERNAME.github.io/judo-techniques
 ### Run Locally
 
 1. Clone the repository:
+
    ```
    git clone https://github.com/YOUR-USERNAME/judo-techniques.git
    ```
 
 2. Navigate to the project directory:
+
    ```
    cd judo-techniques
    ```
 
 3. Open `index.html` in your browser or use a local server:
+
    ```
    # Using Python 3
    python -m http.server 8080
