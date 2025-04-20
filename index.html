@@ -1,0 +1,43 @@
+<!-- filepath: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Judo Techniques Guide</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Vue Router CDN -->
+    <script src="https://unpkg.com/vue-router@4"></script>
+
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Judo Techniques Guide</h1>
+        <nav>
+          <ul>
+        <li>
+          <router-link to="/">Home</router-link>
+        </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <router-view></router-view>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Shodan Revision - Francis Filion</p>
+      </footer>
+    </div>
+
+    <script src="js/techniques.js"></script>
+    <script src="js/home-component.js"></script>
+    <script src="js/technique-components.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
