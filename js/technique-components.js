@@ -22,6 +22,7 @@ const TechniqueFamilyPage = {
   template: `
     <div class="technique-page">
       <div v-if="showFamily">
+        <router-link :to="'/'"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> Home</router-link>
         <h2>{{ title }}</h2>
         <p>{{ description }}</p>
         <div class="technique-list">
