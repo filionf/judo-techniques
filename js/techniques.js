@@ -657,3 +657,142 @@ const techniqueData = {
     ],
   },
 };
+
+/**
+ * Utility functions for managing judo techniques
+ */
+const techniqueUtils = {
+  getAllTechniquesForLevel(level) {
+    let allTechniques = [];
+
+    for (const familyKey in techniqueData) {
+      const familyTechniques = techniqueData[familyKey].techniques
+        .filter((technique) => technique.level === level)
+        .map((technique) => ({
+          ...technique,
+          family: familyKey,
+        }));
+
+      allTechniques = allTechniques.concat(familyTechniques);
+    }
+
+    return allTechniques;
+  },
+
+  getRandomTechnique(options = {}) {
+    const { level = "shodan", family = null, excludeIds = [] } = options;
+
+    let techniques;
+    if (family) {
+      // Get techniques from specific family
+      techniques =
+        techniqueData[family]?.techniques
+          .filter((technique) => technique.level === level)
+          .map((technique) => ({
+            ...technique,
+            family,
+          })) || [];
+    } else {
+      // Get all techniques across all families
+      techniques = this.getAllTechniquesForLevel(level);
+    }
+
+    // Filter out already shown techniques
+    const availableTechniques = techniques.filter(
+      (technique) => !excludeIds.includes(technique.name)
+    );
+
+    if (availableTechniques.length === 0) {
+      return null;
+    }
+
+    const randomIndex = Math.floor(Math.random() * availableTechniques.length);
+    return availableTechniques[randomIndex];
+  },
+
+  /**
+   * Navigate to a random technique with centralized tracking logic
+   * @param {Object} options - Configuration options
+   * @param {string} options.level - The skill level (shodan, nidan, sandan)
+   * @param {string|null} options.family - Optional family to limit the selection
+   * @param {Function} options.router - Vue Router instance for navigation
+   * @returns {Object} The selected random technique
+   */
+  navigateToRandomTechnique(options) {
+    const { level, family = null, router } = options;
+
+    // Determine the mode (global or family-specific)
+    const randomMode = family ? "family" : "global";
+    const storageKey = `${randomMode}RandomlyShownTechniques`;
+
+    // Save the random mode and family (if applicable)
+    sessionStorage.setItem("randomMode", randomMode);
+    if (family) {
+      sessionStorage.setItem("randomFamily", family);
+    }
+
+    // Get previously shown techniques
+    let randomlyShownTechniques = JSON.parse(
+      sessionStorage.getItem(storageKey) || "[]"
+    );
+
+    // Get all available techniques for this mode
+    let allTechniques;
+    if (family) {
+      allTechniques =
+        techniqueData[family]?.techniques
+          .filter((technique) => technique.level === level)
+          .map((technique) => ({ ...technique, family })) || [];
+    } else {
+      allTechniques = this.getAllTechniquesForLevel(level);
+    }
+
+    // Reset if all techniques have been shown
+    if (randomlyShownTechniques.length >= allTechniques.length) {
+      randomlyShownTechniques = [];
+      sessionStorage.setItem(storageKey, JSON.stringify([]));
+    }
+
+    // Get the next random technique
+    const randomTechnique = this.getRandomTechnique({
+      level,
+      family,
+      excludeIds: randomlyShownTechniques,
+    });
+
+    if (randomTechnique) {
+      // Add to shown list
+      randomlyShownTechniques.push(randomTechnique.name);
+      sessionStorage.setItem(
+        storageKey,
+        JSON.stringify(randomlyShownTechniques)
+      );
+
+      // Check if we're currently on a technique detail page
+      const currentRoute = router.currentRoute.value;
+      const isDetailPage =
+        currentRoute.params.family && currentRoute.params.technique;
+
+      // Either replace or push based on current location
+      if (isDetailPage) {
+        // On a detail page, replace the current route
+        router.replace(
+          `/${randomTechnique.family}/${encodeURIComponent(
+            randomTechnique.name.toLowerCase()
+          )}`
+        );
+      } else {
+        // Not on a detail page, push a new route
+        router.push(
+          `/${randomTechnique.family}/${encodeURIComponent(
+            randomTechnique.name.toLowerCase()
+          )}`
+        );
+      }
+
+      return randomTechnique;
+    }
+
+    return null;
+  },
+};

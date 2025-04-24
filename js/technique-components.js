@@ -25,36 +25,11 @@ const TechniqueFamilyPage = {
   },
   methods: {
     goToRandomTechnique() {
-      let randomlyShownTechniques = JSON.parse(
-        sessionStorage.getItem("randomlyShownTechniques") || "[]"
-      );
-      if (randomlyShownTechniques.length === this.techniques.length) {
-        // If all techniques have been shown, clear the list
-        randomlyShownTechniques = [];
-        sessionStorage.setItem("randomlyShownTechniques", JSON.stringify([]));
-      }
-      // Filter out already shown techniques
-      const unshownTechniques = this.techniques.filter(
-        (technique) => !randomlyShownTechniques.includes(technique.name)
-      );
-      if (unshownTechniques.length) {
-        const randomIndex = Math.floor(
-          Math.random() * unshownTechniques.length
-        );
-        const randomTechnique = unshownTechniques[randomIndex];
-        // Add the shown technique to the list
-        randomlyShownTechniques.push(randomTechnique.name);
-        sessionStorage.setItem(
-          "randomlyShownTechniques",
-          JSON.stringify(randomlyShownTechniques)
-        );
-        this.$router.push(
-          "/" +
-            this.family +
-            "/" +
-            encodeURIComponent(randomTechnique.name.toLowerCase())
-        );
-      }
+      techniqueUtils.navigateToRandomTechnique({
+        level: this.level,
+        family: this.family,
+        router: this.$router
+      });
     },
   },
   template: `
@@ -63,7 +38,7 @@ const TechniqueFamilyPage = {
         <router-link :to="'/'"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> Home</router-link>
         <h2>{{ title }}</h2>
         <p>{{ description }}</p>
-        <button @click="goToRandomTechnique" class="random-technique-btn">
+        <button @click="goToRandomTechnique" class="random-btn">
           Random Technique
         </button>
         <div class="technique-list">
@@ -85,7 +60,7 @@ const TechniqueFamilyPage = {
 };
 
 const TechniqueDetailPage = {
-  props: ["family", "technique"],
+  props: ["family", "technique", "level"],
   data() {
     return {
       videoExpanded: false,
@@ -104,15 +79,48 @@ const TechniqueDetailPage = {
         ) || {}
       );
     },
+    inRandomMode() {
+      return sessionStorage.getItem("randomMode") !== null;
+    },
+    randomModeType() {
+      return sessionStorage.getItem("randomMode");
+    },
+    isGlobalMode() {
+      return this.randomModeType === "global";
+    }
   },
   methods: {
     toggleVideo() {
       this.videoExpanded = !this.videoExpanded;
     },
+
+    goToNextRandomTechnique() {
+      const randomMode = sessionStorage.getItem("randomMode");
+      const options = {
+        level: this.level,
+        router: this.$router
+      };
+
+      if (randomMode === "family") {
+        options.family = sessionStorage.getItem("randomFamily");
+      }
+
+      techniqueUtils.navigateToRandomTechnique(options);
+    },
   },
   template: `
     <div class="technique-detail-page">
-      <router-link :to="'/' + family"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> {{ familyData.title }}</router-link>
+      <div class="navigation-links">
+        <router-link :to="'/' + family"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> {{ familyData.title }}</router-link>
+
+        <button v-if="inRandomMode" @click="goToNextRandomTechnique"
+          class="random-btn"
+          :class="{ 'global-random-btn': isGlobalMode }">
+          Next Random Technique
+          <i class="fa-solid fa-forward" aria-hidden="true"></i>
+        </button>
+      </div>
+
       <h2>{{ techniqueData.name }}</h2>
       <p>{{ techniqueData.description }}</p>
 
