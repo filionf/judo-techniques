@@ -63,7 +63,7 @@ const TechniqueDetailPage = {
   props: ["family", "technique", "level"],
   data() {
     return {
-      videoExpanded: false,
+      detailsExpanded: false,
     };
   },
   computed: {
@@ -90,8 +90,8 @@ const TechniqueDetailPage = {
     }
   },
   methods: {
-    toggleVideo() {
-      this.videoExpanded = !this.videoExpanded;
+    toggleDetails() {
+      this.detailsExpanded = !this.detailsExpanded;
     },
 
     goToNextRandomTechnique() {
@@ -122,21 +122,25 @@ const TechniqueDetailPage = {
       </div>
 
       <h2>{{ techniqueData.name }}</h2>
-      <p>{{ techniqueData.description }}</p>
 
-      <div v-if="techniqueData.videoId" class="video-section">
-        <button @click="toggleVideo" class="video-toggle-btn">
-          <i :class="videoExpanded ? 'fa-solid fa-chevron-up' : 'fa-solid fa-play'" aria-hidden="true"></i>
-          {{ videoExpanded ? 'Hide Demonstration' : 'Show Demonstration' }}
+      <div class="details-section">
+        <button @click="toggleDetails" class="toggle-btn">
+          <i :class="detailsExpanded ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-right'" aria-hidden="true"></i>
+          {{ detailsExpanded ? 'Hide Details' : 'Show Details' }}
         </button>
 
-        <div v-if="videoExpanded" class="video-container">
-          <iframe
-            :src="'https://www.youtube.com/embed/' + techniqueData.videoId + '?fs=1&rel=0&modestbranding=1&playsinline=0'"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-            allowfullscreen>
-          </iframe>
+        <div v-if="detailsExpanded" class="details-container">
+          <p>{{ techniqueData.description }}</p>
+
+          <div v-if="techniqueData.videoId" class="video-container">
+            <h4>Demonstration</h4>
+            <iframe
+              :src="'https://www.youtube.com/embed/' + techniqueData.videoId + '?fs=1&rel=0&modestbranding=1&playsinline=0'"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
       </div>
     </div>
