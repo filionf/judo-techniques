@@ -17,13 +17,6 @@ body {
   min-height: 100vh;
 }
 
-header {
-  background-color: #1a1a2e;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-
 main {
   flex: 1;
   max-width: 1200px;
@@ -31,10 +24,40 @@ main {
   width: 100%;
 }
 
+/* Header styling */
+
+header {
+  background-color: #1a1a2e;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.level-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.level-selector select {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Home page styling */
 .home-page {
   padding: 1rem;
 }
 
+/* Family and technique pages styling */
 .technique-page {
   background-color: white;
   border-radius: 8px;
@@ -66,7 +89,6 @@ main {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Add to your CSS file (e.g., styles.css) */
 .random-technique-btn {
   background-color: #4a7bab;
   color: white;

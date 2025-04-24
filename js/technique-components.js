@@ -1,6 +1,6 @@
 // Template for all technique pages
 const TechniqueFamilyPage = {
-  props: ["family"],
+  props: ["family", "level"],
   computed: {
     familyData() {
       return techniqueData[this.family] || {};
@@ -12,7 +12,11 @@ const TechniqueFamilyPage = {
       return this.familyData.description || "";
     },
     techniques() {
-      return this.familyData.techniques || [];
+      // Filter techniques based on the current level
+      const allTechniques = this.familyData.techniques || [];
+      return allTechniques.filter(
+        (technique) => technique.level === this.level
+      );
     },
     showFamily() {
       // Hide the list if a technique detail is being viewed
@@ -75,7 +79,7 @@ const TechniqueFamilyPage = {
           </router-link>
         </div>
       </div>
-      <router-view></router-view>
+      <router-view :level="level"></router-view>
     </div>
   `,
 };

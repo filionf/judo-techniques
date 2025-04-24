@@ -1,6 +1,11 @@
-/* filepath: js/app.js */
+// In your routes definition, make sure to pass the level prop from the router to each component
 const routes = [
-  { path: "/", component: Home, name: "Home" },
+  {
+    path: "/",
+    component: Home,
+    name: "Home",
+    props: true,
+  },
   {
     path: "/:family",
     component: TechniqueFamilyPage,
@@ -24,7 +29,6 @@ routes.forEach((route) => {
       route.children = [];
     }
 
-    console.log(route.name);
     route.children.push({
       path: ":id", // nested under the family route, e.g. '/te-waza/:id'
       component: TechniqueDetailPage,
@@ -50,5 +54,9 @@ const app = Vue.createApp({
 });
 
 app.component("technique-page", TechniqueFamilyPage);
+app.component("header-component", HeaderComponent);
 app.use(router);
+
+app.component("app-root", RootComponent);
+
 app.mount("#app");
