@@ -95,6 +95,9 @@ const TechniqueDetailPage = {
     },
 
     goToNextRandomTechnique() {
+      // Reset details expanded state before navigating
+      this.detailsExpanded = false;
+
       const randomMode = sessionStorage.getItem("randomMode");
       const options = {
         level: this.level,
