@@ -1,21 +1,26 @@
 // Template for all technique pages
 const TechniqueFamilyPage = {
-  props: ["family", "level"],
+  props: ["family"],
+  data() {
+    return {
+      currentLevel: appState.getLevel(),
+    };
+  },
   computed: {
-    familyData() {
-      return techniqueData[this.family] || {};
+    familyInfo() {
+      // Use familyData object directly to get family information
+      return familyData[this.family] || {};
     },
     title() {
-      return this.familyData.title || "";
+      return this.familyInfo.title || "";
     },
     description() {
-      return this.familyData.description || "";
+      return this.familyInfo.description || "";
     },
     techniques() {
-      // Filter techniques based on the current level
-      const allTechniques = this.familyData.techniques || [];
-      return allTechniques.filter(
-        (technique) => technique.level === this.level
+      return techniqueUtils.getTechniquesForFamily(
+        this.family,
+        this.currentLevel
       );
     },
     showFamily() {
@@ -26,11 +31,24 @@ const TechniqueFamilyPage = {
   methods: {
     goToRandomTechnique() {
       techniqueUtils.navigateToRandomTechnique({
-        level: this.level,
         family: this.family,
-        router: this.$router
+        router: this.$router,
       });
     },
+
+    // Method to handle level change events
+    onLevelChanged(event) {
+      // Update the current level
+      this.currentLevel = appState.getLevel();
+    },
+  },
+  mounted() {
+    // Listen for level changes
+    document.addEventListener("level-changed", this.onLevelChanged);
+  },
+  beforeUnmount() {
+    // Clean up event listener
+    document.removeEventListener("level-changed", this.onLevelChanged);
   },
   template: `
     <div class="technique-page">
@@ -54,7 +72,7 @@ const TechniqueFamilyPage = {
           </router-link>
         </div>
       </div>
-      <router-view :level="level"></router-view>
+      <router-view v-if="!showFamily"></router-view>
     </div>
   `,
 };
@@ -67,27 +85,29 @@ const TechniqueDetailPage = {
     };
   },
   computed: {
-    familyData() {
-      const family = techniqueData[this.family] || { techniques: [] };
-      return family;
+    familyInfo() {
+      // Get family information from familyData
+      return familyData[this.family] || {};
     },
     techniqueData() {
-      const family = techniqueData[this.family] || { techniques: [] };
+      // Find the technique in the flattened techniqueData array
       return (
-        family.techniques.find(
-          (t) => t.name.toLowerCase() === this.technique.toLowerCase()
+        techniqueData.find(
+          (t) =>
+            t.family === this.family &&
+            t.name.toLowerCase() === this.technique.toLowerCase()
         ) || {}
       );
     },
-    inRandomMode() {
-      return sessionStorage.getItem("randomMode") !== null;
+    randomMode() {
+      return appState.randomTechniques.getCurrentMode();
     },
-    randomModeType() {
-      return sessionStorage.getItem("randomMode");
+    inRandomMode() {
+      return this.randomMode !== null;
     },
     isGlobalMode() {
-      return this.randomModeType === "global";
-    }
+      return this.randomMode === "global";
+    },
   },
   methods: {
     toggleDetails() {
@@ -98,14 +118,16 @@ const TechniqueDetailPage = {
       // Reset details expanded state before navigating
       this.detailsExpanded = false;
 
-      const randomMode = sessionStorage.getItem("randomMode");
+      // Get current random mode - returns either "global" or the family name
+      const currentMode = appState.randomTechniques.getCurrentMode();
+
       const options = {
-        level: this.level,
-        router: this.$router
+        router: this.$router,
       };
 
-      if (randomMode === "family") {
-        options.family = sessionStorage.getItem("randomFamily");
+      // If currentMode is not "global", it contains the family name
+      if (currentMode && currentMode !== "global") {
+        options.family = currentMode;
       }
 
       techniqueUtils.navigateToRandomTechnique(options);
@@ -114,7 +136,7 @@ const TechniqueDetailPage = {
   template: `
     <div class="technique-detail-page">
       <div class="navigation-links">
-        <router-link :to="'/' + family"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> {{ familyData.title }}</router-link>
+        <router-link :to="'/' + family"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> {{ familyInfo.title }}</router-link>
 
         <button v-if="inRandomMode" @click="goToNextRandomTechnique"
           class="random-btn"

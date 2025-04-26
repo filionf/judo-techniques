@@ -11,7 +11,7 @@ const RootComponent = {
     }
   },
   template: `
-    <header-component v-model="currentLevel"></header-component>
+    <header-component></header-component>
     <main>
       <router-view :level="currentLevel"></router-view>
     </main>

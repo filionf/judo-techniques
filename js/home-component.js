@@ -1,27 +1,54 @@
 // Home page component
 const Home = {
-  props: ["level"],
   data() {
     return {
-      categories: Object.keys(techniqueData).map((key) => ({
-        id: key,
-        title: techniqueData[key].title,
-        description: techniqueData[key].description,
-        techniqueCount: techniqueData[key].techniques.length,
-      })),
+      categories: this.getCategoriesWithCounts(),
+      currentLevel: appState.getLevel(),
     };
   },
   methods: {
+    getCategoriesWithCounts() {
+      return Object.keys(familyData)
+        .map((key) => {
+          // Use getTechniquesForFamily function to get the correct count for the current level
+          const techniques = techniqueUtils.getTechniquesForFamily(key);
+          const techniqueCount = techniques.length;
+
+          return {
+            id: key,
+            title: familyData[key].title,
+            description: familyData[key].description,
+            techniqueCount: techniqueCount,
+          };
+        })
+        .filter((category) => category.techniqueCount > 0);
+    },
+
     goToRandomTechnique() {
       techniqueUtils.navigateToRandomTechnique({
-        level: this.level,
-        router: this.$router
+        router: this.$router,
       });
+    },
+
+    // Handler for level change event
+    onLevelChanged(event) {
+      // Update the current level
+      this.currentLevel = appState.getLevel();
+
+      // Refresh the categories with new counts
+      this.categories = this.getCategoriesWithCounts();
     },
   },
   mounted() {
-    // Optional: Clear global random history when returning to home
-    sessionStorage.removeItem("globalRandomlyShownTechniques");
+    // Clear global random history when returning to home
+    localStorage.removeItem("randomlyShownTechniques");
+
+    // Add event listener for level changes
+    document.addEventListener("level-changed", this.onLevelChanged);
+  },
+  beforeUnmount() {
+    // Remove event listener when component is destroyed
+    document.removeEventListener("level-changed", this.onLevelChanged);
   },
   template: `
     <div class="home-page">
@@ -39,6 +66,7 @@ const Home = {
         <router-link v-for="category in categories" :key="category.id" :to="'/' + category.id" class="technique-family-card">
           <div>
             <h2>{{ category.title }}</h2>
+            <p>{{ category.techniqueCount }} techniques</p>
           </div>
         </router-link>
       </div>

@@ -1,26 +1,30 @@
 const HeaderComponent = {
-  props: {
-    modelValue: {
-      type: String,
-      default: "shodan",
-    },
-  },
   data() {
     return {
-      levels: ["shodan", "nidan", "sandan"],
+      levels: appState.availableLevels || ["shodan", "nidan", "sandan"],
+      selectedLevel: appState.getLevel(),
     };
   },
-  computed: {
-    selectedLevel: {
-      get() {
-        return this.modelValue;
-      },
-      set(value) {
-        this.$emit("update:modelValue", value);
-        // Store in localStorage when value changes
-        localStorage.setItem("judo-selected-level", value);
-      },
+  methods: {
+    onLevelChange() {
+      // Update the level in the centralized state
+      appState.setLevel(this.selectedLevel);
+
+      // No need to manually emit events or store in localStorage
+      // since appState.setLevel() handles that
     },
+    onLevelChanged(event) {
+      // Update local state when level is changed elsewhere
+      this.selectedLevel = appState.getLevel();
+    },
+  },
+  mounted() {
+    // Listen for level changes from other components
+    document.addEventListener("level-changed", this.onLevelChanged);
+  },
+  beforeUnmount() {
+    // Clean up event listener
+    document.removeEventListener("level-changed", this.onLevelChanged);
   },
   template: `
     <header>
@@ -28,7 +32,7 @@ const HeaderComponent = {
         <h1>Judo Prep Guide</h1>
         <div class="level-selector">
           <label for="level-type">Level:</label>
-          <select id="level-type" v-model="selectedLevel">
+          <select id="level-type" v-model="selectedLevel" @change="onLevelChange">
             <option v-for="level in levels" :key="level" :value="level">
               {{ level.charAt(0).toUpperCase() + level.slice(1) }}
             </option>
