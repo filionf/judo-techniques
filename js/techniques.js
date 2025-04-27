@@ -6,16 +6,17 @@ const techniqueUtils = {
     // Use provided level or get from appState
     const targetLevels = levels || appState.getLevels();
 
-    // If targetLevels is an array, get techniques for all levels
+    // If targetLevels is an array, get techniques for any matching level
     if (Array.isArray(targetLevels)) {
       return techniqueData.filter((technique) =>
-        targetLevels.includes(technique.level)
+        // Check if any targetLevel is in the technique's levels array
+        targetLevels.some((level) => technique.levels.includes(level))
       );
     }
 
     // Backward compatibility for single level
-    return techniqueData.filter(
-      (technique) => technique.level === targetLevels
+    return techniqueData.filter((technique) =>
+      technique.levels.includes(targetLevels)
     );
   },
 
@@ -27,8 +28,8 @@ const techniqueUtils = {
       (technique) =>
         technique.family === family &&
         (Array.isArray(currentLevels)
-          ? currentLevels.includes(technique.level)
-          : technique.level === currentLevels)
+          ? currentLevels.some((level) => technique.levels.includes(level))
+          : technique.levels.includes(currentLevels))
     );
   },
 
@@ -44,8 +45,8 @@ const techniqueUtils = {
     let techniques = techniqueData.filter(
       (technique) =>
         (Array.isArray(level)
-          ? level.includes(technique.level)
-          : technique.level === level) &&
+          ? level.some((l) => technique.levels.includes(l))
+          : technique.levels.includes(level)) &&
         (family === null || technique.family === family) &&
         !excludeIds.includes(technique.name)
     );
@@ -81,8 +82,8 @@ const techniqueUtils = {
     const availableTechniques = techniqueData.filter(
       (technique) =>
         (Array.isArray(level)
-          ? level.includes(technique.level)
-          : technique.level === level) &&
+          ? level.some((l) => technique.levels.includes(l))
+          : technique.levels.includes(level)) &&
         (family === null || technique.family === family)
     );
 
