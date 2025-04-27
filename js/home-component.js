@@ -51,11 +51,8 @@ const HomeComponent = {
   },
   template: `
     <div class="home-page">
-      <h2>Welcome to the unofficial Judo Exam Preparation Guide</h2>
-      <p>Judo (柔道, jūdō) is a modern Japanese martial art, which originated in Japan in the late 19th century.
-         Its most prominent feature is its competitive element, where the objective is to either throw or takedown
-         an opponent to the ground, immobilize or otherwise subdue an opponent with a pin, or force an opponent to
-         submit with a joint lock or a choke.</p>
+      <h2>{{ $t('home.welcome') }}</h2>
+      <p>{{ $t('home.description') }}</p>
 
       <button @click="goToRandomTechnique" class="random-btn global-random-btn">
         {{ $t('ui.randomTechnique') }}

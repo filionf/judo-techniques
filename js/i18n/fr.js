@@ -48,6 +48,10 @@ const fr = {
     hideDetails: "Masquer les détails",
     randomTechnique: "Technique aléatoire",
   },
+  home: {
+    welcome: "Bienvenue dans le Guide non officiel de Préparation à l'Examen de Judo",
+    description: "Le Judo (柔道, jūdō) est un art martial japonais moderne, qui a vu le jour au Japon à la fin du 19ème siècle. Sa caractéristique la plus marquante est son élément compétitif, où l'objectif est soit de projeter ou de faire tomber un adversaire au sol, de l'immobiliser ou de le maîtriser avec une immobilisation, ou de forcer un adversaire à abandonner avec une clé articulaire ou un étranglement."
+  },
   techniques: {
     // Te-waza
     "seoi-nage": {
