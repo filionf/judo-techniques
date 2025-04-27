@@ -7,15 +7,11 @@ const TechniqueFamilyPage = {
     };
   },
   computed: {
-    familyInfo() {
-      // Use familyData object directly to get family information
-      return familyData[this.family] || {};
-    },
     title() {
-      return this.familyInfo.title || "";
+      return this.$t(`families.${this.family}.title`);
     },
     description() {
-      return this.familyInfo.description || "";
+      return this.$t(`families.${this.family}.description`);
     },
     techniques() {
       return techniqueUtils.getTechniquesForFamily(
@@ -57,7 +53,7 @@ const TechniqueFamilyPage = {
         <h2>{{ title }}</h2>
         <p>{{ description }}</p>
         <button @click="goToRandomTechnique" class="random-btn">
-          Random Technique
+          {{ $t('ui.randomTechnique') }}
         </button>
         <div class="technique-list">
           <router-link
@@ -85,9 +81,9 @@ const TechniqueDetailPage = {
     };
   },
   computed: {
-    familyInfo() {
-      // Get family information from familyData
-      return familyData[this.family] || {};
+    familyTitle() {
+      // Add this computed property to properly translate the title
+      return this.$t(`families.${this.family}.title`);
     },
     techniqueData() {
       // Find the technique in the flattened techniqueData array
@@ -136,12 +132,12 @@ const TechniqueDetailPage = {
   template: `
     <div class="technique-detail-page">
       <div class="navigation-links">
-        <router-link :to="'/' + family"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> {{ familyInfo.title }}</router-link>
+        <router-link :to="'/' + family"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> {{ familyTitle }}</router-link>
 
         <button v-if="inRandomMode" @click="goToNextRandomTechnique"
           class="random-btn"
           :class="{ 'global-random-btn': isGlobalMode }">
-          Next
+          {{ $t('ui.next') }}
         </button>
       </div>
 
@@ -150,7 +146,7 @@ const TechniqueDetailPage = {
       <div class="details-section">
         <button @click="toggleDetails" class="toggle-btn">
           <i :class="detailsExpanded ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-right'" aria-hidden="true"></i>
-          {{ detailsExpanded ? 'Hide Details' : 'Show Details' }}
+          {{ $t(detailsExpanded ? 'ui.hideDetails' : 'ui.showDetails') }}
         </button>
 
         <div v-if="detailsExpanded" class="details-container">

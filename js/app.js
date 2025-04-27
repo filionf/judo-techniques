@@ -1,3 +1,13 @@
+const i18n = VueI18n.createI18n({
+  legacy: false,
+  locale:
+    localStorage.getItem("preferredLanguage") ||
+    navigator.language.split("-")[0] ||
+    "en",
+  fallbackLocale: "en",
+  messages: { en, fr },
+});
+
 // In your routes definition, make sure to pass the level prop from the router to each component
 const routes = [
   {
@@ -53,10 +63,11 @@ const app = Vue.createApp({
   },
 });
 
+app.use(router);
+app.use(i18n);
+
 app.component("technique-page", TechniqueFamilyPage);
 app.component("header-component", HeaderComponent);
-app.use(router);
-
 app.component("app-root", RootComponent);
 
 app.mount("#app");

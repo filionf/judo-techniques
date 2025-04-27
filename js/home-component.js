@@ -8,22 +8,21 @@ const HomeComponent = {
   },
   methods: {
     getCategoriesWithCounts() {
-      return Object.keys(familyData)
-        .map((key) => {
+      return familyData
+        .map((family) => {
           // Get techniques for all selected levels
-          const techniques = techniqueUtils.getTechniquesForFamily(key);
+          const techniques = techniqueUtils.getTechniquesForFamily(family);
           const techniqueCount = techniques.length;
 
           return {
-            id: key,
-            title: familyData[key].title,
-            description: familyData[key].description,
+            id: family,
+            title: this.$t(`families.${family}.title`),
+            description: this.$t(`families.${family}.description`),
             techniqueCount: techniqueCount,
           };
         })
         .filter((category) => category.techniqueCount > 0);
     },
-
     goToRandomTechnique() {
       techniqueUtils.navigateToRandomTechnique({
         router: this.$router,
@@ -59,7 +58,7 @@ const HomeComponent = {
          submit with a joint lock or a choke.</p>
 
       <button @click="goToRandomTechnique" class="random-btn global-random-btn">
-        Random Technique
+        {{ $t('ui.randomTechnique') }}
       </button>
 
       <div class="family-list">
