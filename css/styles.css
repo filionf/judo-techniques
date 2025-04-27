@@ -168,11 +168,12 @@ header {
 }
 
 .global-random-btn {
-  background-color: #b94a4a;
+  background-color: #a52222;
+  border: 1px solid #8a1c1c;
 }
 
 .global-random-btn:hover {
-  background-color: #a03e3e;
+  background-color: #8a1c1c;
 }
 
 .navigation-links {

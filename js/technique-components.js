@@ -141,8 +141,7 @@ const TechniqueDetailPage = {
         <button v-if="inRandomMode" @click="goToNextRandomTechnique"
           class="random-btn"
           :class="{ 'global-random-btn': isGlobalMode }">
-          Next Random Technique
-          <i class="fa-solid fa-forward" aria-hidden="true"></i>
+          Next
         </button>
       </div>
 

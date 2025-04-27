@@ -61,14 +61,14 @@ const techniqueUtils = {
   /**
    * Navigate to a random technique with centralized tracking logic
    * @param {Object} options - Configuration options
-   * @param {string} [options.level] - The skill level (shodan, nidan, sandan)
+   * @param {string|string[]} [options.level] - The skill level(s) (shodan, nidan, sandan)
    * @param {string|null} [options.family] - Optional family to limit the selection
    * @param {Function} options.router - Vue Router instance for navigation
    * @returns {Object} The selected random technique
    */
   navigateToRandomTechnique(options) {
-    // Default level to current level from appState if not specified
-    const { level = appState.getLevel(), family = null, router } = options;
+    // Default level to current levels from appState if not specified
+    const { level = appState.getLevels(), family = null, router } = options;
 
     // Save the random mode and family using state management
     appState.randomTechniques.setRandomMode(family || "global");
@@ -80,7 +80,9 @@ const techniqueUtils = {
     // Get all available techniques for this mode
     const availableTechniques = techniqueData.filter(
       (technique) =>
-        technique.level === level &&
+        (Array.isArray(level)
+          ? level.includes(technique.level)
+          : technique.level === level) &&
         (family === null || technique.family === family)
     );
 
