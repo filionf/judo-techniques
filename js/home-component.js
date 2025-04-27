@@ -8,7 +8,7 @@ const HomeComponent = {
   },
   methods: {
     getCategoriesWithCounts() {
-      return familyData
+      return Object.keys(familyData)
         .map((family) => {
           // Get techniques for all selected levels
           const techniques = techniqueUtils.getTechniquesForFamily(family);

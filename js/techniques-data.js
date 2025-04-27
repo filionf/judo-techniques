@@ -1,14 +1,30 @@
-// Create a simple array of technique families
-const familyData = [
-  "te-waza",
-  "koshi-waza",
-  "ashi-waza",
-  "masutemi-waza",
-  "yoko-sutemi-waza",
-  "osaekomi-waza",
-  "shime-waza",
-  "kansetsu-waza",
-];
+// Create an object of technique families with video IDs
+const familyData = {
+  "te-waza": {
+    videoId: "z5qYfCEcZOU",
+  },
+  "koshi-waza": {
+    videoId: "cgIby7HnKzA",
+  },
+  "ashi-waza": {
+    videoId: "-Xpmgtaypmg",
+  },
+  "masutemi-waza": {
+    videoId: "LnjW67efl00",
+  },
+  "yoko-sutemi-waza": {
+    videoId: "ml_eSxz8OMo",
+  },
+  "osaekomi-waza": {
+    videoId: "guJ-HlAKEA8",
+  },
+  "shime-waza": {
+    videoId: "bq3cwrcS1-c",
+  },
+  "kansetsu-waza": {
+    videoId: "QtVipMcTsdw",
+  },
+};
 
 // Flattened techniques data - now a simple array with family as a property
 const techniqueData = [
