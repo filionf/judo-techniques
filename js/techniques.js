@@ -8,22 +8,23 @@ const techniqueUtils = {
 
     // If targetLevels is an array, get techniques for all levels
     if (Array.isArray(targetLevels)) {
-      return techniqueData.filter(technique =>
+      return techniqueData.filter((technique) =>
         targetLevels.includes(technique.level)
       );
     }
 
     // Backward compatibility for single level
-    return techniqueData.filter(technique => technique.level === targetLevels);
+    return techniqueData.filter(
+      (technique) => technique.level === targetLevels
+    );
   },
 
   getTechniquesForFamily(family, level = null) {
-    // Get current levels from appState instead of sessionStorage
     const currentLevels = level || appState.getLevels();
 
     // Filter techniques by family and any of the current levels
     return techniqueData.filter(
-      technique =>
+      (technique) =>
         technique.family === family &&
         (Array.isArray(currentLevels)
           ? currentLevels.includes(technique.level)
@@ -41,7 +42,7 @@ const techniqueUtils = {
 
     // Filter techniques by selected levels and optionally by family
     let techniques = techniqueData.filter(
-      technique =>
+      (technique) =>
         (Array.isArray(level)
           ? level.includes(technique.level)
           : technique.level === level) &&

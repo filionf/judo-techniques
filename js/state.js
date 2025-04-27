@@ -69,7 +69,7 @@ const appState = {
      */
     getShownTechniques() {
       const storageKey = `randomlyShownTechniques`;
-      return JSON.parse(sessionStorage.getItem(storageKey) || "[]");
+      return JSON.parse(localStorage.getItem(storageKey) || "[]");
     },
 
     /**
@@ -78,7 +78,7 @@ const appState = {
      */
     saveShownTechniques(techniques) {
       const storageKey = `randomlyShownTechniques`;
-      sessionStorage.setItem(storageKey, JSON.stringify(techniques));
+      localStorage.setItem(storageKey, JSON.stringify(techniques));
     },
 
     /**
@@ -95,8 +95,8 @@ const appState = {
      * Clear the shown techniques for all modes
      */
     clearShownTechniques() {
-      sessionStorage.removeItem("randomMode");
-      sessionStorage.removeItem("randomlyShownTechniques");
+      localStorage.removeItem("randomMode");
+      localStorage.removeItem("randomlyShownTechniques");
     },
 
     /**
@@ -104,10 +104,10 @@ const appState = {
      * @param {string} mode - "global" or the family name
      */
     setRandomMode(mode) {
-      let currentMode = sessionStorage.getItem("randomMode");
+      let currentMode = localStorage.getItem("randomMode");
       if (currentMode !== mode) {
-        sessionStorage.setItem("randomMode", mode);
-        sessionStorage.removeItem("randomlyShownTechniques");
+        localStorage.setItem("randomMode", mode);
+        localStorage.removeItem("randomlyShownTechniques");
       }
     },
 
@@ -116,7 +116,7 @@ const appState = {
      * @returns {string|null} "global", the family name, or null if not set
      */
     getCurrentMode() {
-      return sessionStorage.getItem("randomMode") || null;
+      return localStorage.getItem("randomMode") || null;
     },
   },
 };
