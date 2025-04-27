@@ -27,9 +27,9 @@ main {
 /* Header styling */
 
 header {
-  background-color: #1a1a2e;
+  background-color: #c73030;
   color: white;
-  padding: 1rem;
+  padding: 0.5rem;
   text-align: center;
 }
 
@@ -55,12 +55,17 @@ header {
   align-items: center;
   gap: 8px;
   padding: 5px 10px;
-  background-color: #2a2a3e;
+  background-color: #a52222;
   color: white;
-  border: 1px solid #3a3a4e;
+  border: 1px solid #8a1c1c;
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.level-selector-btn:hover {
+  background-color: #8a1c1c;
 }
 
 .dropdown-icon {
@@ -218,7 +223,7 @@ header {
 }
 
 footer {
-  background-color: #1a1a2e;
+  background-color: #c73030;
   color: white;
   text-align: center;
   padding: 1rem;
@@ -261,6 +266,7 @@ footer {
 .menu-item {
   display: flex;
   align-items: center;
+  text-align: left;
   padding: 8px 12px;
   cursor: pointer;
   position: relative;
