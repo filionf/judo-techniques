@@ -12,6 +12,15 @@ const TechniqueFamilyPage = {
     description() {
       return this.$t(`families.${this.family}.description`);
     },
+    videoUrl() {
+      if (!familyData[this.family].videoId) {
+        return null;
+      } else {
+        return `https://www.youtube.com/embed/${
+          familyData[this.family].videoId
+        }`;
+      }
+    },
     techniques() {
       return techniqueUtils.getTechniquesForFamily(
         this.family,
@@ -54,6 +63,19 @@ const TechniqueFamilyPage = {
         <button @click="goToRandomTechnique" class="random-btn">
           {{ $t('ui.randomTechnique') }}
         </button>
+
+        <!-- Family video section -->
+        <div v-if="videoUrl" class="family-video-container">
+          <div class="video-wrapper">
+            <iframe
+              :src="videoUrl"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
         <div class="technique-list">
           <router-link
             v-for="technique in techniques"
