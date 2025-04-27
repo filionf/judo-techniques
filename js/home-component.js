@@ -1,16 +1,16 @@
 // Home page component
-const Home = {
+const HomeComponent = {
   data() {
     return {
       categories: this.getCategoriesWithCounts(),
-      currentLevel: appState.getLevel(),
+      currentLevels: appState.getLevels(),
     };
   },
   methods: {
     getCategoriesWithCounts() {
       return Object.keys(familyData)
         .map((key) => {
-          // Use getTechniquesForFamily function to get the correct count for the current level
+          // Get techniques for all selected levels
           const techniques = techniqueUtils.getTechniquesForFamily(key);
           const techniqueCount = techniques.length;
 
@@ -31,9 +31,9 @@ const Home = {
     },
 
     // Handler for level change event
-    onLevelChanged(event) {
-      // Update the current level
-      this.currentLevel = appState.getLevel();
+    onLevelsChanged(event) {
+      // Update the current levels
+      this.currentLevels = appState.getLevels();
 
       // Refresh the categories with new counts
       this.categories = this.getCategoriesWithCounts();
@@ -44,11 +44,11 @@ const Home = {
     localStorage.removeItem("randomlyShownTechniques");
 
     // Add event listener for level changes
-    document.addEventListener("level-changed", this.onLevelChanged);
+    document.addEventListener("levels-changed", this.onLevelsChanged);
   },
   beforeUnmount() {
     // Remove event listener when component is destroyed
-    document.removeEventListener("level-changed", this.onLevelChanged);
+    document.removeEventListener("levels-changed", this.onLevelsChanged);
   },
   template: `
     <div class="home-page">

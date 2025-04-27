@@ -3,7 +3,7 @@ const TechniqueFamilyPage = {
   props: ["family"],
   data() {
     return {
-      currentLevel: appState.getLevel(),
+      currentLevels: appState.getLevels(),
     };
   },
   computed: {
@@ -20,7 +20,7 @@ const TechniqueFamilyPage = {
     techniques() {
       return techniqueUtils.getTechniquesForFamily(
         this.family,
-        this.currentLevel
+        this.currentLevels
       );
     },
     showFamily() {
@@ -37,18 +37,18 @@ const TechniqueFamilyPage = {
     },
 
     // Method to handle level change events
-    onLevelChanged(event) {
-      // Update the current level
-      this.currentLevel = appState.getLevel();
+    onLevelsChanged(event) {
+      // Update the current levels
+      this.currentLevels = appState.getLevels();
     },
   },
   mounted() {
     // Listen for level changes
-    document.addEventListener("level-changed", this.onLevelChanged);
+    document.addEventListener("levels-changed", this.onLevelsChanged);
   },
   beforeUnmount() {
     // Clean up event listener
-    document.removeEventListener("level-changed", this.onLevelChanged);
+    document.removeEventListener("levels-changed", this.onLevelsChanged);
   },
   template: `
     <div class="technique-page">

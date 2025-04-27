@@ -2,35 +2,49 @@
  * Utility functions for managing judo techniques
  */
 const techniqueUtils = {
-  getAllTechniquesForLevel(level = null) {
+  getAllTechniquesForLevel(levels = null) {
     // Use provided level or get from appState
-    const targetLevel = level || appState.getLevel();
-    return techniqueData.filter((technique) => technique.level === targetLevel);
+    const targetLevels = levels || appState.getLevels();
+
+    // If targetLevels is an array, get techniques for all levels
+    if (Array.isArray(targetLevels)) {
+      return techniqueData.filter(technique =>
+        targetLevels.includes(technique.level)
+      );
+    }
+
+    // Backward compatibility for single level
+    return techniqueData.filter(technique => technique.level === targetLevels);
   },
 
   getTechniquesForFamily(family, level = null) {
-    // Get current level from appState instead of sessionStorage
-    const currentLevel = level || appState.getLevel();
+    // Get current levels from appState instead of sessionStorage
+    const currentLevels = level || appState.getLevels();
 
-    // Filter techniques by family and current level
+    // Filter techniques by family and any of the current levels
     return techniqueData.filter(
-      (technique) =>
-        technique.family === family && technique.level === currentLevel
+      technique =>
+        technique.family === family &&
+        (Array.isArray(currentLevels)
+          ? currentLevels.includes(technique.level)
+          : technique.level === currentLevels)
     );
   },
 
   getRandomTechnique(options = {}) {
-    // Default level to current level from appState if not specified
+    // Default level to current levels from appState if not specified
     const {
-      level = appState.getLevel(),
+      level = appState.getLevels(),
       family = null,
       excludeIds = [],
     } = options;
 
-    // Filter techniques by level and optionally by family
+    // Filter techniques by selected levels and optionally by family
     let techniques = techniqueData.filter(
-      (technique) =>
-        technique.level === level &&
+      technique =>
+        (Array.isArray(level)
+          ? level.includes(technique.level)
+          : technique.level === level) &&
         (family === null || technique.family === family) &&
         !excludeIds.includes(technique.name)
     );

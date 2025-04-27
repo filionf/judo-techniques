@@ -2,29 +2,26 @@ const HeaderComponent = {
   data() {
     return {
       levels: appState.availableLevels || ["shodan", "nidan", "sandan"],
-      selectedLevel: appState.getLevel(),
+      selectedLevel: appState.getLevels()[0], // Get first level from the array
     };
   },
   methods: {
     onLevelChange() {
       // Update the level in the centralized state
-      appState.setLevel(this.selectedLevel);
-
-      // No need to manually emit events or store in localStorage
-      // since appState.setLevel() handles that
+      appState.setLevels([this.selectedLevel]);
     },
-    onLevelChanged(event) {
+    onLevelsChanged(event) {
       // Update local state when level is changed elsewhere
-      this.selectedLevel = appState.getLevel();
+      this.selectedLevel = appState.getLevels()[0];
     },
   },
   mounted() {
     // Listen for level changes from other components
-    document.addEventListener("level-changed", this.onLevelChanged);
+    document.addEventListener("levels-changed", this.onLevelsChanged); // Updated event name
   },
   beforeUnmount() {
     // Clean up event listener
-    document.removeEventListener("level-changed", this.onLevelChanged);
+    document.removeEventListener("levels-changed", this.onLevelsChanged); // Updated event name
   },
   template: `
     <header>

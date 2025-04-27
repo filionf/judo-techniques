@@ -2,30 +2,33 @@
  * Central state management for the Judo app
  */
 const appState = {
-  // Current belt level - default to "shodan" (first degree black belt)
-  currentLevel: "shodan",
+  // Current belt levels - default to ["shodan"] (first degree black belt)
+  currentLevels: ["shodan"],
 
   // Available levels (belt ranks)
   availableLevels: ["shodan", "nidan", "sandan"],
 
-  // Get the current level
-  getLevel() {
-    return this.currentLevel;
+  // Get the current levels
+  getLevels() {
+    return this.currentLevels;
   },
 
-  // Set the current level
-  setLevel(level) {
-    // Validate that the level is allowed
-    if (this.availableLevels.includes(level)) {
-      this.currentLevel = level;
+  // Set the current levels
+  setLevels(levels) {
+    // Validate that all levels are allowed
+    if (
+      Array.isArray(levels) &&
+      levels.every((level) => this.availableLevels.includes(level))
+    ) {
+      this.currentLevels = levels;
 
       // Store in localStorage for persistence
-      localStorage.setItem("judoLevel", level);
+      localStorage.setItem("judoLevels", JSON.stringify(levels));
 
       // Dispatch a custom event that components can listen for
       document.dispatchEvent(
-        new CustomEvent("level-changed", {
-          detail: { level: this.currentLevel },
+        new CustomEvent("levels-changed", {
+          detail: { levels: this.currentLevels },
         })
       );
 
@@ -34,13 +37,28 @@ const appState = {
     return false;
   },
 
-  // Initialize state - load saved level from localStorage if available
+  // Initialize state - load saved levels from localStorage if available
   initialize() {
-    const savedLevel = localStorage.getItem("judoLevel");
-    if (savedLevel && this.availableLevels.includes(savedLevel)) {
-      this.currentLevel = savedLevel;
+    try {
+      const savedData = localStorage.getItem("judoLevels");
+      if (savedData) {
+        let savedLevels = JSON.parse(savedData);
+
+        // Filter valid levels and ensure at least one valid level
+        if (Array.isArray(savedLevels)) {
+          const validLevels = savedLevels.filter((level) =>
+            this.availableLevels.includes(level)
+          );
+
+          if (validLevels.length > 0) {
+            this.currentLevels = validLevels;
+          }
+        }
+      }
+    } catch (error) {
+      // Keep default levels on error
+      console.error("Error initializing levels:", error);
     }
-    return this.currentLevel;
   },
 
   // Random technique state management
@@ -106,7 +124,7 @@ const appState = {
 // Initialize on script load
 appState.initialize();
 
-// Add level change listener to clear random technique history
-document.addEventListener("level-changed", () => {
+// Add levels change listener to clear random technique history
+document.addEventListener("levels-changed", () => {
   appState.randomTechniques.clearShownTechniques();
 });
