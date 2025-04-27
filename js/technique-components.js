@@ -150,7 +150,7 @@ const TechniqueDetailPage = {
         </button>
 
         <div v-if="detailsExpanded" class="details-container">
-          <p>{{ techniqueData.description }}</p>
+          <p>{{ $t('techniques.' + techniqueData.name.toLowerCase() + '.description') }}</p>
 
           <div v-if="techniqueData.videoId" class="video-container">
             <h4>Demonstration</h4>
