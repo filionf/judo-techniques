@@ -80,7 +80,7 @@ const techniqueData = [
   {
     name: "Seoi-otoshi",
     videoId: "vu1TMVNnq34",
-    levels: ["sandan"],
+    levels: ["sandan", "green"],
     family: "te-waza",
   },
   {
@@ -92,7 +92,7 @@ const techniqueData = [
   {
     name: "Yama-arashi",
     videoId: "MGlyKmSuzdc",
-    levels: ["sandan"],
+    levels: ["sandan", "green"],
     family: "te-waza",
   },
   {
@@ -232,7 +232,7 @@ const techniqueData = [
   {
     name: "Okuri-ashi-harai",
     videoId: "nw1ZdRjrdRI",
-    levels: ["shodan"],
+    levels: ["shodan", "green"],
     family: "ashi-waza",
   },
   {
@@ -244,13 +244,13 @@ const techniqueData = [
   {
     name: "Ko-soto-gake",
     videoId: "8b6kY4s4zH4",
-    levels: ["shodan"],
+    levels: ["shodan", "green"],
     family: "ashi-waza",
   },
   {
     name: "Ashi-guruma",
     videoId: "ROeayhvom9U",
-    levels: ["shodan"],
+    levels: ["shodan", "green"],
     family: "ashi-waza",
   },
   {
@@ -304,13 +304,13 @@ const techniqueData = [
   {
     name: "O-soto-otoshi",
     videoId: "2DsVvDw7b8g",
-    levels: ["sandan"],
+    levels: ["sandan", "green"],
     family: "ashi-waza",
   },
   {
     name: "Tsubame-gaeshi",
     videoId: "GwweWqqFB5g",
-    levels: ["sandan"],
+    levels: ["sandan", "green"],
     family: "ashi-waza",
   },
   // Masutemi-waza techniques
@@ -518,13 +518,13 @@ const techniqueData = [
   {
     name: "Kata-juji-jime",
     videoId: "3VZVUAmiMD8",
-    levels: ["shodan"],
+    levels: ["shodan", "green"],
     family: "shime-waza",
   },
   {
     name: "Hadaka-jime",
     videoId: "9f0n8jez7iA",
-    levels: ["shodan"],
+    levels: ["shodan", "green"],
     family: "shime-waza",
   },
   {
@@ -585,7 +585,7 @@ const techniqueData = [
   {
     name: "Ude-hishigi-juji-gatame",
     videoId: "OWgSOlCuMXw",
-    levels: ["shodan"],
+    levels: ["shodan", "green"],
     family: "kansetsu-waza",
   },
   {
