@@ -32,7 +32,7 @@ const techniqueData = [
   {
     name: "Seoi-nage",
     videoId: "zIq0xI0ogxk",
-    levels: ["shodan"],
+    levels: ["shodan", "orange/green"],
     family: "te-waza",
   },
   {
@@ -50,7 +50,7 @@ const techniqueData = [
   {
     name: "Kata-guruma",
     videoId: "cnHRhSy8yi4",
-    levels: ["shodan"],
+    levels: ["shodan", "orange/green"],
     family: "te-waza",
   },
   {
@@ -153,19 +153,19 @@ const techniqueData = [
   {
     name: "Harai-goshi",
     videoId: "qTo8HlAAkOo",
-    levels: ["shodan"],
+    levels: ["shodan", "orange/green"],
     family: "koshi-waza",
   },
   {
     name: "Tsuri-goshi",
     videoId: "51Htlp7xEvE",
-    levels: ["shodan"],
+    levels: ["shodan", "orange/green"],
     family: "koshi-waza",
   },
   {
     name: "Hane-goshi",
     videoId: "M9_7De6A1kk",
-    levels: ["shodan"],
+    levels: ["shodan", "orange/green"],
     family: "koshi-waza",
   },
   {
@@ -268,7 +268,7 @@ const techniqueData = [
   {
     name: "O-soto-guruma",
     videoId: "92KbCm6pQeI",
-    levels: ["shodan"],
+    levels: ["shodan", "orange/green"],
     family: "ashi-waza",
   },
   {
@@ -506,13 +506,13 @@ const techniqueData = [
   {
     name: "Nami-juji-jime",
     videoId: "k2cHry9HByQ",
-    levels: ["shodan"],
+    levels: ["shodan", "orange/green"],
     family: "shime-waza",
   },
   {
     name: "Gyaku-juji-jime",
     videoId: "t3tQriIPdlI",
-    levels: ["shodan"],
+    levels: ["shodan", "orange/green"],
     family: "shime-waza",
   },
   {
