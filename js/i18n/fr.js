@@ -50,8 +50,6 @@ const fr = {
     levels: {
       noLevels: "Aucun niveau",
       allLevels: "Tous les niveaux",
-      allColoredBelts: "Blanche-Marron",
-      allBlackBelts: "Shodan-Sandan",
       multiplelevels: "{count} niveaux",
       shodan: "Shodan",
       nidan: "Nidan",

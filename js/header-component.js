@@ -62,10 +62,6 @@ const HeaderComponent = {
       // Return "All levels" if either all colored belts or all black belts are selected
       if (allColoredBeltsSelected && allBlackBeltsSelected) {
         return this.$t("ui.levels.allLevels");
-      } else if (allColoredBeltsSelected) {
-        return this.$t("ui.levels.allColoredBelts");
-      } else if (allBlackBeltsSelected) {
-        return this.$t("ui.levels.allBlackBelts");
       }
 
       if (count === this.levels.length) return this.$t("ui.levels.allLevels");
@@ -75,7 +71,50 @@ const HeaderComponent = {
         return this.$t(`ui.levels.${levelName}`);
       }
 
+      // Check for consecutive belts
+      const consecutiveRange = this.getConsecutiveBeltsRange();
+      if (consecutiveRange) {
+        return consecutiveRange;
+      }
+
       return this.$t("ui.levels.multiplelevels", { count });
+    },
+
+    // Add a new method to detect consecutive belt ranges
+    getConsecutiveBeltsRange() {
+      // Combine belt arrays in proper progression order
+      const orderedBelts = [
+        ...this.groupedLevels.coloredBelts,
+        ...this.groupedLevels.blackBelts,
+      ];
+
+      // Sort selected belts according to the established belt order
+      const selectedOrderedBelts = this.selectedLevels
+        .filter((level) => orderedBelts.includes(level))
+        .sort((a, b) => orderedBelts.indexOf(a) - orderedBelts.indexOf(b));
+
+      if (selectedOrderedBelts.length < 2) return null;
+
+      // Get indices of selected belts in the ordered list
+      const selectedIndices = selectedOrderedBelts.map((belt) =>
+        orderedBelts.indexOf(belt)
+      );
+
+      // Check if indices are consecutive
+      const isConsecutive = selectedIndices.every(
+        (val, idx, arr) => idx === 0 || val === arr[idx - 1] + 1
+      );
+
+      if (isConsecutive) {
+        const startLevel = selectedOrderedBelts[0];
+        const endLevel = selectedOrderedBelts[selectedOrderedBelts.length - 1];
+
+        return `${this.$t(`ui.levels.${startLevel}`)} - ${this.$t(
+          `ui.levels.${endLevel}`
+        )}`;
+      }
+
+      return null;
     },
   },
   mounted() {
