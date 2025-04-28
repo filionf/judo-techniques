@@ -147,7 +147,7 @@ const techniqueData = [
   {
     name: "Tsurikomi-goshi",
     videoId: "McfzA0yRVt4",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow/orange"],
     family: "koshi-waza",
   },
   {
@@ -190,7 +190,7 @@ const techniqueData = [
   {
     name: "De-ashi-harai",
     videoId: "4BUUvqxi_Kk",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow/orange"],
     family: "ashi-waza",
   },
   {
@@ -220,13 +220,13 @@ const techniqueData = [
   {
     name: "Ko-soto-gari",
     videoId: "jeQ541ScLB4",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow/orange"],
     family: "ashi-waza",
   },
   {
     name: "Ko-uchi-gari",
     videoId: "3Jb3tZvr9Ng",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow/orange"],
     family: "ashi-waza",
   },
   {
@@ -445,19 +445,19 @@ const techniqueData = [
   {
     name: "Kesa-gatame",
     videoId: "NDaQuJOFBYk",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow/orange"],
     family: "osaekomi-waza",
   },
   {
     name: "Kata-gatame",
     videoId: "zQR3IOXxO_Q",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow/orange"],
     family: "osaekomi-waza",
   },
   {
     name: "Kuzure-kami-shiho-gatame",
     videoId: "YUrogQWdwiY",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow/orange"],
     family: "osaekomi-waza",
   },
   {
