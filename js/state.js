@@ -8,7 +8,6 @@ const appState = {
   // Available levels (belt ranks)
 
   availableColoredBelts: [
-    "white/yellow",
     "yellow",
     "yellow/orange",
     "orange",

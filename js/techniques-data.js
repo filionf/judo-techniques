@@ -38,7 +38,7 @@ const techniqueData = [
   {
     name: "Ippon-seoi-nage",
     videoId: "FQnOlCxo4oI",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow"],
     family: "te-waza",
   },
   {
@@ -135,13 +135,13 @@ const techniqueData = [
   {
     name: "O-goshi",
     videoId: "yhu1mfy2vJ4",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow"],
     family: "koshi-waza",
   },
   {
     name: "Koshi-guruma",
     videoId: "SU7Id6uVJ44",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow"],
     family: "koshi-waza",
   },
   {
@@ -196,7 +196,7 @@ const techniqueData = [
   {
     name: "Hiza-guruma",
     videoId: "JPJx9-oAVns",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow"],
     family: "ashi-waza",
   },
   {
@@ -208,13 +208,13 @@ const techniqueData = [
   {
     name: "O-soto-gari",
     videoId: "c-A_nP7mKAc",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow"],
     family: "ashi-waza",
   },
   {
     name: "O-uchi-gari",
     videoId: "0itJFhV9pDQ",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow"],
     family: "ashi-waza",
   },
   {

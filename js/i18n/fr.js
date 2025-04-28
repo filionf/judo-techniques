@@ -54,7 +54,6 @@ const fr = {
       shodan: "Shodan",
       nidan: "Nidan",
       sandan: "Sandan",
-      "white/yellow": "Blanc/Jaune",
       yellow: "Jaune",
       "yellow/orange": "Jaune/Orange",
       orange: "Orange",
