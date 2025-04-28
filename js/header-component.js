@@ -60,8 +60,12 @@ const HeaderComponent = {
       if (count === 0) return this.$t("ui.levels.noLevels");
 
       // Return "All levels" if either all colored belts or all black belts are selected
-      if (allColoredBeltsSelected || allBlackBeltsSelected) {
+      if (allColoredBeltsSelected && allBlackBeltsSelected) {
         return this.$t("ui.levels.allLevels");
+      } else if (allColoredBeltsSelected) {
+        return this.$t("ui.levels.allColoredBelts");
+      } else if (allBlackBeltsSelected) {
+        return this.$t("ui.levels.allBlackBelts");
       }
 
       if (count === this.levels.length) return this.$t("ui.levels.allLevels");

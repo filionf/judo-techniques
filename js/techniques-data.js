@@ -463,7 +463,7 @@ const techniqueData = [
   {
     name: "Yoko-shiho-gatame",
     videoId: "TT7XJVSEQxA",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow"],
     family: "osaekomi-waza",
   },
   {
@@ -475,13 +475,13 @@ const techniqueData = [
   {
     name: "Kuzure-kesa-gatame",
     videoId: "Q2fb9jaoUFQ",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow"],
     family: "osaekomi-waza",
   },
   {
     name: "Kami-shiho-gatame",
     videoId: "HFuMjOv0WN8",
-    levels: ["shodan"],
+    levels: ["shodan", "yellow"],
     family: "osaekomi-waza",
   },
   {
@@ -542,7 +542,7 @@ const techniqueData = [
   {
     name: "Sankaku-jime",
     videoId: "lq1CUBRAm7s",
-    levels: ["nidan"],
+    levels: ["nidan", "blue"],
     family: "shime-waza",
   },
   {

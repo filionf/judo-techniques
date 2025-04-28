@@ -50,6 +50,8 @@ const en = {
     levels: {
       noLevels: "No levels",
       allLevels: "All levels",
+      allColoredBelts: "White-Yellow",
+      allBlackBelts: "Shodan-Sandan",
       multiplelevels: "{count} levels",
       shodan: "Shodan",
       nidan: "Nidan",
