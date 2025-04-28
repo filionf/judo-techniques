@@ -74,7 +74,7 @@ const techniqueData = [
   {
     name: "Ko-uchi-gaeshi",
     videoId: "_MWAdYi_LC4",
-    levels: ["nidan"],
+    levels: ["nidan", "brown"],
     family: "te-waza",
   },
   {
@@ -110,19 +110,19 @@ const techniqueData = [
   {
     name: "Kuchiki-taoshi",
     videoId: "ZNL47q1aJNY",
-    levels: ["sandan"],
+    levels: ["sandan", "brown"],
     family: "te-waza",
   },
   {
     name: "Kibisu-gaeshi",
     videoId: "tJylJYfBliA",
-    levels: ["sandan"],
+    levels: ["sandan", "brown"],
     family: "te-waza",
   },
   {
     name: "Uchi-mata-sukashi",
     videoId: "V-RS3uhtVWM",
-    levels: ["sandan"],
+    levels: ["sandan", "brown"],
     family: "te-waza",
   },
   // Koshi-waza techniques
@@ -274,19 +274,19 @@ const techniqueData = [
   {
     name: "O-soto-gaeshi",
     videoId: "8ZjM3X_EANo",
-    levels: ["nidan"],
+    levels: ["nidan", "brown"],
     family: "ashi-waza",
   },
   {
     name: "O-uchi-gaeshi",
     videoId: "dCyZTXyjIXE",
-    levels: ["nidan"],
+    levels: ["nidan", "brown"],
     family: "ashi-waza",
   },
   {
     name: "Hane-goshi-gaeshi",
     videoId: "9bZAZSBtnGs",
-    levels: ["nidan"],
+    levels: ["nidan", "brown"],
     family: "ashi-waza",
   },
   {
@@ -329,7 +329,7 @@ const techniqueData = [
   {
     name: "Ura-nage",
     videoId: "Fgi9b8DJ5sQ",
-    levels: ["shodan"],
+    levels: ["shodan", "brown"],
     family: "masutemi-waza",
   },
   {
@@ -390,7 +390,7 @@ const techniqueData = [
   {
     name: "Yoko-gake",
     videoId: "tP1Sj1uDfSo",
-    levels: ["shodan"],
+    levels: ["shodan", "brown"],
     family: "yoko-sutemi-waza",
   },
   {
@@ -408,7 +408,7 @@ const techniqueData = [
   {
     name: "O-soto-makikomi",
     videoId: "DGDv2oMwmas",
-    levels: ["sandan"],
+    levels: ["sandan", "brown"],
     family: "yoko-sutemi-waza",
   },
   {
@@ -548,13 +548,13 @@ const techniqueData = [
   {
     name: "Kata-te-jime",
     videoId: "cHeIs-fSqwE",
-    levels: ["sandan"],
+    levels: ["sandan", "brown"],
     family: "shime-waza",
   },
   {
     name: "Ryote-jime",
     videoId: "-RHC4V7TQiY",
-    levels: ["sandan"],
+    levels: ["sandan", "brown"],
     family: "shime-waza",
   },
   {
@@ -572,7 +572,7 @@ const techniqueData = [
   {
     name: "Do-jime",
     videoId: "D_0fFcoIbvY",
-    levels: ["sandan"],
+    levels: ["sandan", "brown"],
     family: "shime-waza",
   },
   // Kansetsu-waza techniques
@@ -597,7 +597,7 @@ const techniqueData = [
   {
     name: "Ude-hishigi-hiza-gatame",
     videoId: "H2HtAJdiJcE",
-    levels: ["shodan"],
+    levels: ["shodan", "brown"],
     family: "kansetsu-waza",
   },
   {
@@ -615,13 +615,13 @@ const techniqueData = [
   {
     name: "Ude-hishigi-ashi-gatame",
     videoId: "ClY7g_pX-4s",
-    levels: ["sandan"],
+    levels: ["sandan", "brown"],
     family: "kansetsu-waza",
   },
   {
     name: "Ude-hishigi-te-gatame",
     videoId: "6DnvhY0tQVM",
-    levels: ["sandan"],
+    levels: ["sandan", "brown"],
     family: "kansetsu-waza",
   },
   {
@@ -633,7 +633,7 @@ const techniqueData = [
   {
     name: "Ashi-garami",
     videoId: "BWWb0GoAtZw",
-    levels: ["sandan"],
+    levels: ["sandan", "brown"],
     family: "kansetsu-waza",
   },
 ];
