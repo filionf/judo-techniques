@@ -62,7 +62,7 @@ const techniqueData = [
   {
     name: "Uki-otoshi",
     videoId: "6H5tmncOY4Q",
-    levels: ["shodan"],
+    levels: ["shodan", "blue"],
     family: "te-waza",
   },
   {
@@ -183,7 +183,7 @@ const techniqueData = [
   {
     name: "Sode-tsurikomi-goshi",
     videoId: "QsmAxpmYLOI",
-    levels: ["sandan"],
+    levels: ["sandan", "blue"],
     family: "koshi-waza",
   },
   // Ashi-waza techniques
@@ -348,31 +348,31 @@ const techniqueData = [
   {
     name: "Yoko-otoshi",
     videoId: "MnNG67pF_a0",
-    levels: ["shodan"],
+    levels: ["shodan", "blue"],
     family: "yoko-sutemi-waza",
   },
   {
     name: "Tani-otoshi",
     videoId: "3b9Me3Fohpk",
-    levels: ["shodan"],
+    levels: ["shodan", "blue"],
     family: "yoko-sutemi-waza",
   },
   {
     name: "Hane-makikomi",
     videoId: "6CRBGLGz9j8",
-    levels: ["shodan"],
+    levels: ["shodan", "blue"],
     family: "yoko-sutemi-waza",
   },
   {
     name: "Soto-makikomi",
     videoId: "bWG9O1BVKtQ",
-    levels: ["shodan"],
+    levels: ["shodan", "blue"],
     family: "yoko-sutemi-waza",
   },
   {
     name: "Uki-waza",
     videoId: "weVOpJ63gII",
-    levels: ["shodan"],
+    levels: ["shodan", "blue"],
     family: "yoko-sutemi-waza",
   },
   {
@@ -384,7 +384,7 @@ const techniqueData = [
   {
     name: "Yoko-guruma",
     videoId: "MehP6I5cY2c",
-    levels: ["shodan"],
+    levels: ["shodan", "blue"],
     family: "yoko-sutemi-waza",
   },
   {
@@ -420,7 +420,7 @@ const techniqueData = [
   {
     name: "Harai-makikomi",
     videoId: "VBaHzKaCXss",
-    levels: ["sandan"],
+    levels: ["sandan", "blue"],
     family: "yoko-sutemi-waza",
   },
   {
@@ -560,7 +560,7 @@ const techniqueData = [
   {
     name: "Sode-guruma-jime",
     videoId: "E3nvQzClcAU",
-    levels: ["sandan"],
+    levels: ["sandan", "blue"],
     family: "shime-waza",
   },
   {
@@ -591,7 +591,7 @@ const techniqueData = [
   {
     name: "Ude-hishigi-ude-gatame",
     videoId: "SBf0aTma1VI",
-    levels: ["shodan"],
+    levels: ["shodan", "blue"],
     family: "kansetsu-waza",
   },
   {
@@ -603,7 +603,7 @@ const techniqueData = [
   {
     name: "Ude-hishigi-waki-gatame",
     videoId: "8F5p1zuJRG0",
-    levels: ["shodan"],
+    levels: ["shodan", "blue"],
     family: "kansetsu-waza",
   },
   {
