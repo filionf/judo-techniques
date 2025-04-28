@@ -47,10 +47,30 @@ const fr = {
     showDetails: "Afficher les détails",
     hideDetails: "Masquer les détails",
     randomTechnique: "Technique aléatoire",
+    levels: {
+      noLevels: "Aucun niveau",
+      allLevels: "Tous les niveaux",
+      multiplelevels: "{count} niveaux",
+      shodan: "Shodan",
+      nidan: "Nidan",
+      sandan: "Sandan",
+      "white/yellow": "Blanc/Jaune",
+      yellow: "Jaune",
+      "yellow/orange": "Jaune/Orange",
+      orange: "Orange",
+      "orange/green": "Orange/Vert",
+      green: "Vert",
+      "green/blue": "Vert/Bleu",
+      blue: "Bleu",
+      "blue/brown": "Bleu/Marron",
+      brown: "Marron",
+    },
   },
   home: {
-    welcome: "Bienvenue dans le Guide non officiel de Préparation à l'Examen de Judo",
-    description: "Le Judo (柔道, jūdō) est un art martial japonais moderne, qui a vu le jour au Japon à la fin du 19ème siècle. Sa caractéristique la plus marquante est son élément compétitif, où l'objectif est soit de projeter ou de faire tomber un adversaire au sol, de l'immobiliser ou de le maîtriser avec une immobilisation, ou de forcer un adversaire à abandonner avec une clé articulaire ou un étranglement."
+    welcome:
+      "Bienvenue dans le Guide non officiel de Préparation à l'Examen de Judo",
+    description:
+      "Le Judo (柔道, jūdō) est un art martial japonais moderne, qui a vu le jour au Japon à la fin du 19ème siècle. Sa caractéristique la plus marquante est son élément compétitif, où l'objectif est soit de projeter ou de faire tomber un adversaire au sol, de l'immobiliser ou de le maîtriser avec une immobilisation, ou de forcer un adversaire à abandonner avec une clé articulaire ou un étranglement.",
   },
   techniques: {
     // Te-waza

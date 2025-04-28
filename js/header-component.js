@@ -1,10 +1,19 @@
 const HeaderComponent = {
   data() {
     return {
-      levels: appState.availableLevels || ["shodan", "nidan", "sandan"],
+      levels: appState.availableLevels,
       selectedLevels: appState.getLevels(),
       isPopupOpen: false,
     };
+  },
+  computed: {
+    // Get grouped levels directly from appState
+    groupedLevels() {
+      return {
+        blackBelts: appState.availableBlackBelts || [],
+        coloredBelts: appState.availableColoredBelts || [],
+      };
+    },
   },
   methods: {
     toggleLevel(level) {
@@ -33,14 +42,36 @@ const HeaderComponent = {
     },
     getSelectedText() {
       const count = this.selectedLevels.length;
-      if (count === 0) return "No levels";
-      if (count === this.levels.length) return "All levels";
-      if (count === 1) {
-        // Display the actual level name when only one is selected
-        const levelName = this.selectedLevels[0];
-        return levelName.charAt(0).toUpperCase() + levelName.slice(1);
+
+      // Check if all colored belts are selected
+      const allColoredBeltsSelected =
+        this.groupedLevels.coloredBelts.length > 0 &&
+        this.groupedLevels.coloredBelts.every((level) =>
+          this.selectedLevels.includes(level)
+        );
+
+      // Check if all black belts are selected
+      const allBlackBeltsSelected =
+        this.groupedLevels.blackBelts.length > 0 &&
+        this.groupedLevels.blackBelts.every((level) =>
+          this.selectedLevels.includes(level)
+        );
+
+      if (count === 0) return this.$t("ui.levels.noLevels");
+
+      // Return "All levels" if either all colored belts or all black belts are selected
+      if (allColoredBeltsSelected || allBlackBeltsSelected) {
+        return this.$t("ui.levels.allLevels");
       }
-      return `${count} levels`;
+
+      if (count === this.levels.length) return this.$t("ui.levels.allLevels");
+      if (count === 1) {
+        // Display the translated level name when only one is selected
+        const levelName = this.selectedLevels[0];
+        return this.$t(`ui.levels.${levelName}`);
+      }
+
+      return this.$t("ui.levels.multiplelevels", { count });
     },
   },
   mounted() {
@@ -62,7 +93,8 @@ const HeaderComponent = {
           </button>
           <div class="level-popup" v-if="isPopupOpen">
             <ul class="menu-list">
-              <li v-for="level in levels"
+              <!-- Black belts -->
+              <li v-for="level in groupedLevels.blackBelts"
                   :key="level"
                   @click="toggleLevel(level)"
                   class="menu-item">
@@ -72,7 +104,24 @@ const HeaderComponent = {
                 <span class="checkmark" v-else>
                   <i class="fas fa-check" style="visibility: hidden;"></i>
                 </span>
-                <span class="menu-text">{{ level.charAt(0).toUpperCase() + level.slice(1) }}</span>
+                <span class="menu-text">{{ $t('ui.levels.' + level) }}</span>
+              </li>
+
+              <!-- Separator (only if both groups have items) -->
+              <li class="menu-separator" v-if="groupedLevels.coloredBelts.length && groupedLevels.blackBelts.length"></li>
+
+              <!-- Colored belts -->
+              <li v-for="level in groupedLevels.coloredBelts"
+                  :key="level"
+                  @click="toggleLevel(level)"
+                  class="menu-item">
+                <span class="checkmark" v-if="isSelected(level)">
+                  <i class="fas fa-check"></i>
+                </span>
+                <span class="checkmark" v-else>
+                  <i class="fas fa-check" style="visibility: hidden;"></i>
+                </span>
+                <span class="menu-text">{{ $t('ui.levels.' + level) }}</span>
               </li>
             </ul>
           </div>

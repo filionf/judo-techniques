@@ -276,12 +276,17 @@ footer {
   }
 }
 
-/* Add these styles */
-
 .menu-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.menu-separator {
+  height: 1px;
+  background-color: #ddd;
+  margin: 6px 0;
+  list-style: none;
 }
 
 .menu-item {

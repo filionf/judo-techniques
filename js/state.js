@@ -6,7 +6,24 @@ const appState = {
   currentLevels: ["shodan"],
 
   // Available levels (belt ranks)
-  availableLevels: ["shodan", "nidan", "sandan"],
+
+  availableColoredBelts: [
+    "white/yellow",
+    "yellow",
+    "yellow/orange",
+    "orange",
+    "orange/green",
+    "green",
+    "green/blue",
+    "blue",
+    "blue/brown",
+    "brown",
+  ],
+  availableBlackBelts: ["shodan", "nidan", "sandan"],
+
+  get availableLevels() {
+    return [...this.availableColoredBelts, ...this.availableBlackBelts];
+  },
 
   // Get the current levels
   getLevels() {

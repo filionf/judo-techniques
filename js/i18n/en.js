@@ -47,10 +47,29 @@ const en = {
     showDetails: "Show Details",
     hideDetails: "Hide Details",
     randomTechnique: "Random Technique",
+    levels: {
+      noLevels: "No levels",
+      allLevels: "All levels",
+      multiplelevels: "{count} levels",
+      shodan: "Shodan",
+      nidan: "Nidan",
+      sandan: "Sandan",
+      "white/yellow": "White/Yellow",
+      yellow: "Yellow",
+      "yellow/orange": "Yellow/Orange",
+      orange: "Orange",
+      "orange/green": "Orange/Green",
+      green: "Green",
+      "green/blue": "Green/Blue",
+      blue: "Blue",
+      "blue/brown": "Blue/Brown",
+      brown: "Brown",
+    },
   },
   home: {
     welcome: "Welcome to the unofficial Judo Exam Preparation Guide",
-    description: "Judo (柔道, jūdō) is a modern Japanese martial art, which originated in Japan in the late 19th century. Its most prominent feature is its competitive element, where the objective is to either throw or takedown an opponent to the ground, immobilize or otherwise subdue an opponent with a pin, or force an opponent to submit with a joint lock or a choke."
+    description:
+      "Judo (柔道, jūdō) is a modern Japanese martial art, which originated in Japan in the late 19th century. Its most prominent feature is its competitive element, where the objective is to either throw or takedown an opponent to the ground, immobilize or otherwise subdue an opponent with a pin, or force an opponent to submit with a joint lock or a choke.",
   },
   techniques: {
     // Te-waza
