@@ -44,7 +44,7 @@ const techniqueData = [
   {
     name: "Tai-otoshi",
     videoId: "4x6S3Q-Ktv8",
-    levels: ["shodan"],
+    levels: ["shodan", "orange"],
     family: "te-waza",
   },
   {
@@ -129,7 +129,7 @@ const techniqueData = [
   {
     name: "Uki-goshi",
     videoId: "bPKwtB4lyOQ",
-    levels: ["shodan"],
+    levels: ["shodan", "orange"],
     family: "koshi-waza",
   },
   {
@@ -202,7 +202,7 @@ const techniqueData = [
   {
     name: "Sasae-tsurikomi-ashi",
     videoId: "699i--pvYmE",
-    levels: ["shodan"],
+    levels: ["shodan", "orange"],
     family: "ashi-waza",
   },
   {
@@ -262,7 +262,7 @@ const techniqueData = [
   {
     name: "O-guruma",
     videoId: "SnZciTAY9vc",
-    levels: ["shodan"],
+    levels: ["shodan", "orange"],
     family: "ashi-waza",
   },
   {
@@ -469,7 +469,7 @@ const techniqueData = [
   {
     name: "Tate-shiho-gatame",
     videoId: "55-rFmBx53g",
-    levels: ["shodan"],
+    levels: ["shodan", "orange"],
     family: "osaekomi-waza",
   },
   {
