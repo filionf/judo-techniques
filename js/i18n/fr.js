@@ -42,6 +42,7 @@ const fr = {
     },
   },
   ui: {
+    title: "Référence de Judo",
     next: "Suivant",
     home: "Accueil",
     showDetails: "Afficher les détails",
@@ -66,8 +67,13 @@ const fr = {
     },
   },
   home: {
-    welcome:
-      "Bienvenue dans le Guide non officiel de Préparation à l'Examen de Judo",
+    welcome: "Bienvenue dans un guide de référence pour le Judo",
+    instructions: {
+      title: "Pour utiliser :",
+      selectLevel: "Sélectionnez votre/vos niveau(x) dans l'en-tête",
+      findTechnique: "Trouvez une technique en naviguant dans les sections ci-dessous",
+      randomButton: "Ou appuyez sur le bouton aléatoire pour tester votre mémoire, la vidéo de référence sera masquée"
+    },
     description:
       "Le Judo (柔道, jūdō) est un art martial japonais moderne, qui a vu le jour au Japon à la fin du 19ème siècle. Sa caractéristique la plus marquante est son élément compétitif, où l'objectif est soit de projeter ou de faire tomber un adversaire au sol, de l'immobiliser ou de le maîtriser avec une immobilisation, ou de forcer un adversaire à abandonner avec une clé articulaire ou un étranglement.",
   },

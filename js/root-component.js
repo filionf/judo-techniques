@@ -16,7 +16,7 @@ const RootComponent = {
       <router-view :level="currentLevel"></router-view>
     </main>
     <footer>
-      <p>&copy; 2025 Judo Revision - Francis Filion</p>
+      <p>&copy; 2025 Judo Reference - Francis Filion</p>
     </footer>
   `
 };

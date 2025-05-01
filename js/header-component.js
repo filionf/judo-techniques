@@ -128,7 +128,7 @@ const HeaderComponent = {
   template: `
     <header>
       <div class="header-content">
-        <h1>Judo Prep Guide</h1>
+        <h1>{{ $t('ui.title') }}</h1>
         <div class="level-selector">
           <button @click.stop="togglePopup" class="level-selector-btn">
             <span>{{ getSelectedText() }}</span>
