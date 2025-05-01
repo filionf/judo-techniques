@@ -1,42 +1,42 @@
 const fr = {
   families: {
     "te-waza": {
-      title: "TE-WAZA (Techniques de Main)",
+      title: "Techniques de Main",
       description:
         "Les techniques de main en judo se concentrent sur l'utilisation de la prise et de la force des bras pour projeter les adversaires.",
     },
     "koshi-waza": {
-      title: "KOSHI-WAZA (Techniques de Hanche)",
+      title: "Techniques de hanche",
       description:
         "Les techniques de hanche impliquent l'utilisation de votre hanche comme point d'appui pour projeter votre adversaire.",
     },
     "ashi-waza": {
-      title: "ASHI-WAZA (Techniques de Jambe)",
+      title: "Techniques de jambe",
       description:
         "Les techniques de jambe utilisent les jambes pour balayer, accrocher ou bloquer les jambes de l'adversaire pour exécuter des projections.",
     },
     "masutemi-waza": {
-      title: "MASUTEMI-WAZA (Techniques de Sacrifice Arrière)",
+      title: "Techniques de sacrifice arrière",
       description:
         "Techniques de sacrifice où le lanceur tombe directement sur son dos pour projeter l'adversaire.",
     },
     "yoko-sutemi-waza": {
-      title: "YOKO-SUTEMI-WAZA (Techniques de Sacrifice Latéral)",
+      title: "Techniques de sacrifice latéral",
       description:
         "Techniques de sacrifice où le lanceur tombe sur son côté pour projeter l'adversaire.",
     },
     "osaekomi-waza": {
-      title: "OSAEKOMI-WAZA (Techniques d'Immobilisation)",
+      title: "Techniques d'immobilisation",
       description:
         "Techniques de contrôle ou d'immobilisation utilisées pour immobiliser l'adversaire sur son dos.",
     },
     "shime-waza": {
-      title: "SHIME-WAZA (Techniques d'Étranglement)",
+      title: "Techniques d'étranglement",
       description:
         "Techniques d'étranglement qui restreignent le flux sanguin ou la respiration.",
     },
     "kansetsu-waza": {
-      title: "KANSETSU-WAZA (Techniques de Luxation Articulaire)",
+      title: "Techniques de luxation articulaire",
       description:
         "Techniques de manipulation des articulations qui appliquent une pression sur les articulations d'un adversaire.",
     },

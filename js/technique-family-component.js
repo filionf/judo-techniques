@@ -7,7 +7,7 @@ const TechniqueFamilyPage = {
   },
   computed: {
     title() {
-      return this.$t(`families.${this.family}.title`);
+      return this.family.toUpperCase() + " (" + this.$t(`families.${this.family}.title`) + ")";
     },
     description() {
       return this.$t(`families.${this.family}.description`);

@@ -7,8 +7,7 @@ const TechniqueDetailPage = {
   },
   computed: {
     familyTitle() {
-      // Add this computed property to properly translate the title
-      return this.$t(`families.${this.family}.title`);
+      return this.family.toUpperCase();
     },
     techniqueData() {
       // Find the technique in the flattened techniqueData array

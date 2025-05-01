@@ -16,7 +16,7 @@ const HomeComponent = {
 
           return {
             id: family,
-            title: this.$t(`families.${family}.title`),
+            title: family.toUpperCase() + " (" + this.$t(`families.${family}.title`) + ")",
             description: this.$t(`families.${family}.description`),
             techniqueCount: techniqueCount,
           };
@@ -53,11 +53,10 @@ const HomeComponent = {
     <div class="home-page">
       <h2>{{ $t('home.welcome') }}</h2>
       <p>{{ $t('home.description') }}</p>
-      <p>To use:
-        <li>Select your level(s) in the header</li>
-        <li>Find a technique by navigating through the sections below</li>
-        <li>Or hit the random button to practice the your memory, the reference video will be hidden</li>
-      </p>
+      <p>To use:</p>
+        1. {{ $t('home.instructions.selectLevel') }}<br>
+        2. {{ $t('home.instructions.findTechnique') }}<br>
+        3. {{ $t('home.instructions.randomButton') }}<br>
 
       <button @click="goToRandomTechnique" class="random-btn global-random-btn">
         {{ $t('ui.randomTechnique') }}
