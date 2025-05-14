@@ -85,6 +85,17 @@ const TechniqueDetailPage = {
               allowfullscreen>
             </iframe>
           </div>
+
+          <!-- Exit video section -->
+          <div v-if="techniqueData.exitVideoId" class="video-container">
+            <h4>Exit Technique</h4>
+            <iframe
+              :src="'https://www.youtube.com/embed/' + techniqueData.exitVideoId + '?fs=1&rel=0&modestbranding=1&playsinline=0'"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
       </div>
     </div>

@@ -447,60 +447,70 @@ const techniqueData = [
     videoId: "NDaQuJOFBYk",
     levels: ["shodan", "yellow/orange"],
     family: "osaekomi-waza",
+    exitVideoId: "5_TS0YHdxcQ"
   },
   {
     name: "Kata-gatame",
     videoId: "zQR3IOXxO_Q",
     levels: ["shodan", "yellow/orange"],
     family: "osaekomi-waza",
+    exitVideoId: "7hP1-W2yovk"
   },
   {
     name: "Kuzure-kami-shiho-gatame",
     videoId: "YUrogQWdwiY",
     levels: ["shodan", "yellow/orange"],
     family: "osaekomi-waza",
+    exitVideoId: "PPe7E_7d7UI"
   },
   {
     name: "Yoko-shiho-gatame",
     videoId: "TT7XJVSEQxA",
     levels: ["shodan", "yellow"],
     family: "osaekomi-waza",
+    exitVideoId: "yK_GSamSPko"
   },
   {
     name: "Tate-shiho-gatame",
     videoId: "55-rFmBx53g",
     levels: ["shodan", "orange"],
     family: "osaekomi-waza",
+    exitVideoId: "JMJBjnst_DA"
   },
   {
     name: "Kuzure-kesa-gatame",
     videoId: "Q2fb9jaoUFQ",
     levels: ["shodan", "yellow"],
     family: "osaekomi-waza",
+    exitVideoId: "-zFQ6h4yKT4"
   },
   {
     name: "Kami-shiho-gatame",
     videoId: "HFuMjOv0WN8",
     levels: ["shodan", "yellow"],
     family: "osaekomi-waza",
+    exitVideoId: "seGsXy9I4G8"
   },
   {
     name: "Ushiro-kesa-gatame",
     videoId: "SBapox2M2dE",
     levels: ["nidan"],
     family: "osaekomi-waza",
+    exitVideoId: "4QuzAAucQsA"
   },
   {
     name: "Uki-gatame",
     videoId: "e_lAjik1SUM",
     levels: ["sandan"],
     family: "osaekomi-waza",
+    exitVideoId: "AMHWDFR4ryo"
   },
   {
     name: "Ura-gatame",
     videoId: "eeAHZB0v3XY",
     levels: ["sandan"],
     family: "osaekomi-waza",
+    exitVideoId: "0aY2Tmchzs8"
   },
   // Shime-waza techniques
   {
