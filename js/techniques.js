@@ -21,6 +21,11 @@ const techniqueUtils = {
   },
 
   getTechniquesForFamily(family, level = null) {
+    // If family is "favorites", return favorite techniques
+    if (family === "favorites") {
+      return appState.favorites.getAllFavoriteTechniques();
+    }
+
     const currentLevels = level || appState.getLevels();
 
     // Filter techniques by family and any of the current levels
@@ -39,6 +44,7 @@ const techniqueUtils = {
       level = appState.getLevels(),
       family = null,
       excludeIds = [],
+      onlyFavorites = false,
     } = options;
 
     // Filter techniques by selected levels and optionally by family
@@ -48,6 +54,7 @@ const techniqueUtils = {
           ? level.some((l) => technique.levels.includes(l))
           : technique.levels.includes(level)) &&
         (family === null || technique.family === family) &&
+        (!onlyFavorites || appState.favorites.isFavorite(technique.name)) &&
         !excludeIds.includes(technique.name)
     );
 
@@ -64,28 +71,49 @@ const techniqueUtils = {
    * @param {Object} options - Configuration options
    * @param {string|string[]} [options.level] - The skill level(s) (shodan, nidan, sandan)
    * @param {string|null} [options.family] - Optional family to limit the selection
+   * @param {boolean} [options.onlyFavorites] - Whether to only select from favorites
    * @param {Function} options.router - Vue Router instance for navigation
    * @returns {Object} The selected random technique
    */
   navigateToRandomTechnique(options) {
     // Default level to current levels from appState if not specified
-    const { level = appState.getLevels(), family = null, router } = options;
+    const {
+      level = appState.getLevels(),
+      family = null,
+      onlyFavorites = false,
+      router,
+    } = options;
 
-    // Save the random mode and family using state management
-    appState.randomTechniques.setRandomMode(family || "global");
+    // Save the random mode using state management
+    if (onlyFavorites) {
+      appState.randomTechniques.setRandomMode("favorites");
+    } else {
+      appState.randomTechniques.setRandomMode(family || "global");
+    }
 
     // Get previously shown techniques from state management
     let randomlyShownTechniques =
       appState.randomTechniques.getShownTechniques();
 
     // Get all available techniques for this mode
-    const availableTechniques = techniqueData.filter(
-      (technique) =>
-        (Array.isArray(level)
-          ? level.some((l) => technique.levels.includes(l))
-          : technique.levels.includes(level)) &&
-        (family === null || technique.family === family)
-    );
+    let availableTechniques;
+    if (onlyFavorites) {
+      availableTechniques = appState.favorites
+        .getAllFavoriteTechniques()
+        .filter((technique) =>
+          Array.isArray(level)
+            ? level.some((l) => technique.levels.includes(l))
+            : technique.levels.includes(level)
+        );
+    } else {
+      availableTechniques = techniqueData.filter(
+        (technique) =>
+          (Array.isArray(level)
+            ? level.some((l) => technique.levels.includes(l))
+            : technique.levels.includes(level)) &&
+          (family === null || technique.family === family)
+      );
+    }
 
     console.log("Previously shown techniques:", randomlyShownTechniques);
 
@@ -103,39 +131,41 @@ const techniqueUtils = {
       level,
       family,
       excludeIds: randomlyShownTechniques,
+      onlyFavorites,
     });
+
+    if (!randomTechnique) {
+      console.log("No matching techniques available");
+      return null;
+    }
 
     console.log("Selected random technique:", randomTechnique.name);
 
-    if (randomTechnique) {
-      // Add to shown list using state management
-      appState.randomTechniques.addShownTechnique(randomTechnique.name);
+    // Add to shown list using state management
+    appState.randomTechniques.addShownTechnique(randomTechnique.name);
 
-      // Check if we're currently on a technique detail page
-      const currentRoute = router.currentRoute.value;
-      const isDetailPage =
-        currentRoute.params.family && currentRoute.params.technique;
+    // Check if we're currently on a technique detail page
+    const currentRoute = router.currentRoute.value;
+    const isDetailPage =
+      currentRoute.params.family && currentRoute.params.technique;
 
-      // Either replace or push based on current location
-      if (isDetailPage) {
-        // On a detail page, replace the current route
-        router.replace(
-          `/${randomTechnique.family}/${encodeURIComponent(
-            randomTechnique.name.toLowerCase()
-          )}`
-        );
-      } else {
-        // Not on a detail page, push a new route
-        router.push(
-          `/${randomTechnique.family}/${encodeURIComponent(
-            randomTechnique.name.toLowerCase()
-          )}`
-        );
-      }
-
-      return randomTechnique;
+    // Either replace or push based on current location
+    if (isDetailPage) {
+      // On a detail page, replace the current route
+      router.replace(
+        `/${randomTechnique.family}/${encodeURIComponent(
+          randomTechnique.name.toLowerCase()
+        )}`
+      );
+    } else {
+      // Not on a detail page, push a new route
+      router.push(
+        `/${randomTechnique.family}/${encodeURIComponent(
+          randomTechnique.name.toLowerCase()
+        )}`
+      );
     }
 
-    return null;
+    return randomTechnique;
   },
 };

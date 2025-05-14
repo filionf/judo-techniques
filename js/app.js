@@ -17,6 +17,10 @@ const routes = [
     props: true,
   },
   {
+    path: "/favorites",
+    component: FavoritesComponent,
+  },
+  {
     path: "/:family",
     component: TechniqueFamilyPage,
     name: "TechniqueFamily",

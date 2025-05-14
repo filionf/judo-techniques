@@ -71,10 +71,98 @@ const appState = {
           }
         }
       }
+
+      // Initialize favorites
+      this.favorites.initialize();
     } catch (error) {
       // Keep default levels on error
       console.error("Error initializing levels:", error);
     }
+  },
+
+  // Favorites management
+  favorites: {
+    // List of favorite technique IDs
+    favoriteTechniques: [],
+
+    /**
+     * Initialize favorites from localStorage
+     */
+    initialize() {
+      try {
+        const savedFavorites = localStorage.getItem("judoFavorites");
+        if (savedFavorites) {
+          this.favoriteTechniques = JSON.parse(savedFavorites);
+        }
+      } catch (error) {
+        console.error("Error initializing favorites:", error);
+        this.favoriteTechniques = [];
+      }
+    },
+
+    /**
+     * Get all favorite techniques
+     * @returns {Array} List of favorite technique names
+     */
+    getFavorites() {
+      return this.favoriteTechniques;
+    },
+
+    /**
+     * Check if a technique is a favorite
+     * @param {string} techniqueName - Name of the technique to check
+     * @returns {boolean} True if the technique is a favorite
+     */
+    isFavorite(techniqueName) {
+      return this.favoriteTechniques.includes(techniqueName);
+    },
+
+    /**
+     * Toggle a technique's favorite status
+     * @param {string} techniqueName - Name of the technique to toggle
+     * @returns {boolean} New favorite status
+     */
+    toggleFavorite(techniqueName) {
+      const isCurrentlyFavorite = this.isFavorite(techniqueName);
+
+      if (isCurrentlyFavorite) {
+        // Remove from favorites
+        this.favoriteTechniques = this.favoriteTechniques.filter(
+          (name) => name !== techniqueName
+        );
+      } else {
+        // Add to favorites
+        this.favoriteTechniques.push(techniqueName);
+      }
+
+      // Save to localStorage
+      localStorage.setItem(
+        "judoFavorites",
+        JSON.stringify(this.favoriteTechniques)
+      );
+
+      // Dispatch an event that components can listen for
+      document.dispatchEvent(
+        new CustomEvent("favorites-changed", {
+          detail: {
+            technique: techniqueName,
+            isFavorite: !isCurrentlyFavorite,
+          },
+        })
+      );
+
+      return !isCurrentlyFavorite;
+    },
+
+    /**
+     * Get all favorite technique objects
+     * @returns {Array} List of favorite technique objects
+     */
+    getAllFavoriteTechniques() {
+      return techniqueData.filter((technique) =>
+        this.favoriteTechniques.includes(technique.name)
+      );
+    },
   },
 
   // Random technique state management
