@@ -81,7 +81,7 @@ const TechniqueDetailPage = {
               <h4>{{ $t('ui.demonstration') }}</h4>
             </div>
             <iframe
-              :src="'https://www.youtube.com/embed/' + techniqueData.videoId + '?fs=1&rel=0&modestbranding=1&playsinline=0'"
+              :src="'https://www.youtube.com/embed/' + techniqueData.videoId + '?fs=1&rel=0&modestbranding=1&playsinline=0&start=5'"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
               allowfullscreen>
@@ -94,7 +94,7 @@ const TechniqueDetailPage = {
               <h4>{{ $t('ui.exitTechnique') }}</h4>
             </div>
             <iframe
-              :src="'https://www.youtube.com/embed/' + techniqueData.exitVideoId + '?fs=1&rel=0&modestbranding=1&playsinline=0'"
+              :src="'https://www.youtube.com/embed/' + techniqueData.exitVideoId + '?fs=1&rel=0&modestbranding=1&playsinline=0&start=5'"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
               allowfullscreen>
