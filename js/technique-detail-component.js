@@ -28,6 +28,15 @@ const TechniqueDetailPage = {
     isGlobalMode() {
       return this.randomMode === "global";
     },
+    formattedFamilyName() {
+      if (!this.randomMode || this.randomMode === "global") return "";
+
+      // Split by hyphens, capitalize first letter of each word, then rejoin
+      return this.randomMode
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join("-");
+    },
   },
   methods: {
     toggleDetails() {
@@ -61,7 +70,7 @@ const TechniqueDetailPage = {
         <button v-if="inRandomMode" @click="goToNextRandomTechnique"
           class="random-btn"
           :class="{ 'global-random-btn': isGlobalMode }">
-          {{ $t('ui.next') }}
+          {{ isGlobalMode ? $t('ui.next') : $t('ui.nextWithFamily', { family: formattedFamilyName }) }}
         </button>
       </div>
 

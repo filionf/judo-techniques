@@ -44,6 +44,7 @@ const en = {
   ui: {
     title: "Judo Reference",
     next: "Next",
+    nextWithFamily: "Next {family}",
     home: "Home",
     showDetails: "Show details",
     hideDetails: "Hide details",

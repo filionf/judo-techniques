@@ -44,6 +44,7 @@ const fr = {
   ui: {
     title: "Référence de Judo",
     next: "Suivant",
+    nextWithFamily: "Suivant {family}",
     home: "Accueil",
     showDetails: "Afficher les détails",
     hideDetails: "Masquer les détails",
