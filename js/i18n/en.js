@@ -65,6 +65,8 @@ const en = {
       "blue/brown": "Blue/Brown",
       brown: "Brown",
     },
+    demonstration: "Demonstration",
+    exitTechnique: "Exit Technique",
   },
   home: {
     welcome: "Welcome to a reference guide for Judo",

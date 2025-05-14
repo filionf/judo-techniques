@@ -77,7 +77,9 @@ const TechniqueDetailPage = {
           <p>{{ $t('techniques.' + techniqueData.name.toLowerCase() + '.description') }}</p>
 
           <div v-if="techniqueData.videoId" class="video-container">
-            <h4>Demonstration</h4>
+            <div class="video-header">
+              <h4>{{ $t('ui.demonstration') }}</h4>
+            </div>
             <iframe
               :src="'https://www.youtube.com/embed/' + techniqueData.videoId + '?fs=1&rel=0&modestbranding=1&playsinline=0'"
               frameborder="0"
@@ -88,7 +90,9 @@ const TechniqueDetailPage = {
 
           <!-- Exit video section -->
           <div v-if="techniqueData.exitVideoId" class="video-container">
-            <h4>Exit Technique</h4>
+            <div class="video-header">
+              <h4>{{ $t('ui.exitTechnique') }}</h4>
+            </div>
             <iframe
               :src="'https://www.youtube.com/embed/' + techniqueData.exitVideoId + '?fs=1&rel=0&modestbranding=1&playsinline=0'"
               frameborder="0"

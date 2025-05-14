@@ -48,6 +48,8 @@ const fr = {
     showDetails: "Afficher les détails",
     hideDetails: "Masquer les détails",
     randomTechnique: "Technique aléatoire",
+    demonstration: "Démonstration",
+    exitTechnique: "Technique de sortie",
     levels: {
       noLevels: "Aucun niveau",
       allLevels: "Tous les niveaux",
