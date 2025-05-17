@@ -468,15 +468,65 @@ footer {
   margin-top: 20px;
 }
 
-.family-info, .description-info {
+.family-info,
+.description-info {
   margin-bottom: 12px;
 }
 
-.family-label, .description-label {
+.family-label,
+.description-label {
   font-weight: bold;
   margin-right: 6px;
 }
 
 .family-name {
   text-transform: uppercase;
+}
+
+/* Header back button */
+.header-back-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px;
+  padding-left: 0;
+  margin-left: 0;
+  display: none; /* Hidden by default, shown on mobile */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 767px) {
+  .header-back-btn {
+    display: block; /* Show back button in header on mobile */
+  }
+
+  /* Only hide the back link inside navigation-links, not the entire container */
+  body:not(.is-home) .navigation-links a {
+    display: none;
+  }
+
+  /* Keep the navigation-links container visible */
+  body:not(.is-home) .navigation-links {
+    display: flex;
+    justify-content: flex-end; /* Push content to the right */
+  }
+
+  /* Adjust header layout for mobile */
+  .header-content {
+    grid-template-columns: auto 1fr auto;
+    display: grid;
+    padding: 0 5px 0 2px; /* Reduced left padding to 2px */
+  }
+
+  .header-content h1 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .level-selector-btn {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
 }

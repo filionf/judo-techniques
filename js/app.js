@@ -75,3 +75,13 @@ app.component("header-component", HeaderComponent);
 app.component("app-root", RootComponent);
 
 app.mount("#app");
+
+// Add router navigation guards to update body class
+router.afterEach((to, from) => {
+  // Add/remove is-home class on body based on route
+  if (to.path === "/" || to.path === "") {
+    document.body.classList.add("is-home");
+  } else {
+    document.body.classList.remove("is-home");
+  }
+});

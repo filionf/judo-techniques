@@ -57,7 +57,9 @@ const TechniqueFamilyPage = {
   template: `
     <div class="technique-page">
       <div v-if="showFamily">
-        <router-link :to="'/'"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> {{ $t('ui.home') }}</router-link>
+        <div class="navigation-links">
+          <router-link :to="'/'"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> {{ $t('ui.home') }}</router-link>
+        </div>
         <h2>{{ title }}</h2>
         <p>{{ description }}</p>
         <button @click="goToRandomTechnique" class="random-btn">

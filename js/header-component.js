@@ -14,6 +14,14 @@ const HeaderComponent = {
         coloredBelts: appState.availableColoredBelts || [],
       };
     },
+    // Check if we're on the home page
+    isHomePage() {
+      return this.$route.path === "/" || this.$route.path === "";
+    },
+    // Show back button on all pages except home
+    showBackButton() {
+      return !this.isHomePage;
+    },
   },
   methods: {
     toggleLevel(level) {
@@ -39,6 +47,10 @@ const HeaderComponent = {
     },
     onLevelsChanged(event) {
       this.selectedLevels = appState.getLevels();
+    },
+    // Add a method to go back
+    goBack() {
+      window.history.back();
     },
     getSelectedText() {
       const count = this.selectedLevels.length;
@@ -128,6 +140,11 @@ const HeaderComponent = {
   template: `
     <header>
       <div class="header-content">
+        <!-- Back button in header (visible on mobile) -->
+        <button v-if="showBackButton" @click="goBack" class="header-back-btn">
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        </button>
+
         <h1>{{ $t('ui.title') }}</h1>
         <div class="level-selector">
           <button @click.stop="togglePopup" class="level-selector-btn">
