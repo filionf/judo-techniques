@@ -529,4 +529,16 @@ footer {
     padding: 4px 8px;
     font-size: 0.8rem;
   }
+
+  /* Add this new rule to fix home page header alignment */
+  body.is-home .header-content {
+    grid-template-columns: 0 1fr auto; /* Set first column width to 0 on home page */
+  }
+
+  /* Or alternatively, keep the back button space but make it invisible */
+  body.is-home .header-content::before {
+    content: "";
+    width: 24px; /* Approximate width of back button */
+    display: block;
+  }
 }
