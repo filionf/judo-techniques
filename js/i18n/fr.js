@@ -76,6 +76,9 @@ const fr = {
       noFavorites: "You don't have any favorites yet.",
       addFavoritesInstruction: "Star techniques to add them to your favorites.",
     },
+    back: "Retour",
+    family: "Famille",
+    description: "Description",
   },
   home: {
     welcome: "Bienvenue dans un guide de référence pour le Judo",

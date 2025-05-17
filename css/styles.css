@@ -269,6 +269,7 @@ header {
   font-weight: 500;
   transition: background-color 0.2s;
   width: 100%;
+  margin-bottom: 12px;
 }
 
 .toggle-btn:hover {
@@ -465,4 +466,17 @@ footer {
   background-color: #f9f9f9;
   border-radius: 8px;
   margin-top: 20px;
+}
+
+.family-info, .description-info {
+  margin-bottom: 12px;
+}
+
+.family-label, .description-label {
+  font-weight: bold;
+  margin-right: 6px;
+}
+
+.family-name {
+  text-transform: uppercase;
 }

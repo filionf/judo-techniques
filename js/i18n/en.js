@@ -49,6 +49,9 @@ const en = {
     showDetails: "Show details",
     hideDetails: "Hide details",
     randomTechnique: "Random Technique",
+    back: "Back",
+    family: "Family",
+    description: "Description",
     levels: {
       noLevels: "No levels",
       allLevels: "All levels",

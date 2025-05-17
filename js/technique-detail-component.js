@@ -56,6 +56,11 @@ const TechniqueDetailPage = {
       }
     },
 
+    goBack() {
+      // Use browser history to go back
+      window.history.back();
+    },
+
     goToNextRandomTechnique() {
       // Reset details expanded state before navigating
       this.detailsExpanded = false;
@@ -132,7 +137,9 @@ const TechniqueDetailPage = {
   template: `
     <div class="technique-detail-page">
       <div class="navigation-links">
-        <router-link :to="'/' + family"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> {{ familyTitle }}</router-link>
+        <a href="#" @click.prevent="goBack">
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i> {{ $t('ui.back') }}
+        </a>
 
         <div class="action-buttons">
           <button v-if="inRandomMode" @click="goToNextRandomTechnique"
@@ -161,7 +168,15 @@ const TechniqueDetailPage = {
         </button>
 
         <div v-if="detailsExpanded" class="details-container">
-          <p>{{ $t('techniques.' + techniqueData.name.toLowerCase() + '.description') }}</p>
+          <div class="family-info">
+            <span class="family-label">{{ $t('ui.family') }}:</span>
+            <span class="family-name">{{ familyTitle }}</span>
+          </div>
+
+          <div class="description-info">
+            <span class="description-label">{{ $t('ui.description') }}:</span>
+            <span>{{ $t('techniques.' + techniqueData.name.toLowerCase() + '.description') }}</span>
+          </div>
 
           <div v-if="techniqueData.videoId" class="video-container">
             <div class="video-header">
