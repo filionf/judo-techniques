@@ -537,6 +537,62 @@ footer {
   transform: translateY(100px);
 }
 
+/* Note icon styling */
+.note-icon {
+  margin-left: 0.5rem;
+  transition: color 0.2s ease;
+  color: #f5bb2d;
+}
+
+.note-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  resize: vertical;
+  margin-top: 0.5rem;
+}
+
+.technique-section h3 i.fas {
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+/* Make the section header show a pointer cursor to indicate it's clickable */
+.section-header {
+  cursor: pointer;
+}
+
+/* Animation for the section content */
+.section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  opacity: 0;
+}
+
+.section-content.expanded {
+  max-height: 300px; /* Adjust as needed */
+  opacity: 1;
+  padding-top: 0.5rem;
+  overflow: visible;
+}
+
+/* Chevron animation and styling */
+.chevron-icon {
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+}
+
+/* Expanded state (rotated) - pointing down */
+.expanded .chevron-icon,
+.chevron-icon.expanded {
+  transform: rotate(90deg);
+}
+
 /* Responsive styles */
 @media screen and (max-width: 767px) {
   .header-back-btn {

@@ -223,6 +223,60 @@ const appState = {
       return localStorage.getItem("randomMode") || null;
     },
   },
+
+  // Notes management
+  notes: {
+    /**
+     * Generate storage key for a technique note
+     * @param {string} techniqueId - Technique identifier
+     * @returns {string} Storage key for the note
+     */
+    getNoteKey(techniqueId) {
+      return `judo_note_${techniqueId}`;
+    },
+
+    /**
+     * Get note for a technique
+     * @param {string} techniqueId - Technique identifier
+     * @returns {string} Note text or empty string if no note exists
+     */
+    getNote(techniqueId) {
+      return localStorage.getItem(this.getNoteKey(techniqueId)) || '';
+    },
+
+    /**
+     * Save note for a technique
+     * @param {string} techniqueId - Technique identifier
+     * @param {string} noteText - Note text to save
+     */
+    saveNote(techniqueId, noteText) {
+      if (noteText && noteText.trim()) {
+        localStorage.setItem(this.getNoteKey(techniqueId), noteText);
+      } else {
+        localStorage.removeItem(this.getNoteKey(techniqueId));
+      }
+
+      // Dispatch an event that components can listen for
+      document.dispatchEvent(
+        new CustomEvent("note-changed", {
+          detail: {
+            techniqueId: techniqueId,
+            hasNote: this.hasNote(techniqueId)
+          },
+        })
+      );
+    },
+
+    /**
+     * Check if a technique has a note
+     * @param {string} techniqueId - Technique identifier
+     * @returns {boolean} True if the technique has a note
+     */
+    hasNote(techniqueId) {
+      const note = localStorage.getItem(this.getNoteKey(techniqueId));
+      return note !== null && note.trim() !== '';
+    }
+  },
 };
 
 // Initialize on script load

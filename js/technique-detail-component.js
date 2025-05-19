@@ -4,6 +4,8 @@ const TechniqueDetailPage = {
     return {
       detailsExpanded: false,
       isFavorite: false,
+      showNotes: false,
+      noteText: "",
     };
   },
   computed: {
@@ -106,6 +108,18 @@ const TechniqueDetailPage = {
         this.isFavorite = event.detail.isFavorite;
       }
     },
+    loadNote() {
+      this.noteText = appState.notes.getNote(this.techniqueId);
+    },
+    saveNote() {
+      appState.notes.saveNote(this.techniqueId, this.noteText);
+    },
+    toggleNotes() {
+      this.showNotes = !this.showNotes;
+      if (this.showNotes) {
+        this.loadNote();
+      }
+    },
   },
   watch: {
     // Watch for changes to the technique or family
@@ -122,6 +136,11 @@ const TechniqueDetailPage = {
       },
       deep: true,
     },
+    // Add watcher for noteText if you want additional behavior when it changes
+    noteText(newValue) {
+      // You could add debounced auto-save here if desired
+      // For now we'll just keep the blur event for saving
+    },
   },
   mounted() {
     // Initialize favorite status
@@ -129,6 +148,7 @@ const TechniqueDetailPage = {
 
     // Add event listener for favorites changes
     document.addEventListener("favorites-changed", this.onFavoritesChanged);
+    this.loadNote();
   },
   beforeUnmount() {
     // Remove event listener
@@ -161,9 +181,29 @@ const TechniqueDetailPage = {
         </button>
       </div>
 
+      <!-- Notes Section -->
+      <div class="technique-section">
+        <div class="section-header" @click="toggleNotes">
+          <h4>
+            <i class="fas fa-chevron-right chevron-icon" :class="{ 'expanded': showNotes }"></i>
+            Notes
+            <i v-if="noteText.trim()" class="fas fa-sticky-note note-icon"></i>
+          </h4>
+        </div>
+        <div class="section-content" :class="{ 'expanded': showNotes }">
+          <textarea
+            v-model="noteText"
+            @blur="saveNote"
+            placeholder="Add your notes here..."
+            class="note-textarea"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Details Section - now comes after notes -->
       <div class="details-section">
         <button @click="toggleDetails" class="toggle-btn">
-          <i :class="detailsExpanded ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-right'" aria-hidden="true"></i>
+          <i class="fas fa-chevron-right chevron-icon" :class="{ 'expanded': detailsExpanded }"></i>
           {{ $t(detailsExpanded ? 'ui.hideDetails' : 'ui.showDetails') }}
         </button>
 
