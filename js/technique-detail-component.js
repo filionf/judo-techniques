@@ -200,47 +200,50 @@ const TechniqueDetailPage = {
         </div>
       </div>
 
-      <!-- Details Section - now comes after notes -->
-      <div class="details-section">
-        <button @click="toggleDetails" class="toggle-btn">
-          <i class="fas fa-chevron-right chevron-icon" :class="{ 'expanded': detailsExpanded }"></i>
-          {{ $t(detailsExpanded ? 'ui.hideDetails' : 'ui.showDetails') }}
-        </button>
-
-        <div v-if="detailsExpanded" class="details-container">
-          <div class="family-info">
-            <span class="family-label">{{ $t('ui.family') }}:</span>
-            <span class="family-name">{{ familyTitle }}</span>
-          </div>
-
-          <div class="description-info">
-            <span class="description-label">{{ $t('ui.description') }}:</span>
-            <span>{{ $t('techniques.' + techniqueData.name.toLowerCase() + '.description') }}</span>
-          </div>
-
-          <div v-if="techniqueData.videoId" class="video-container">
-            <div class="video-header">
-              <h4>{{ $t('ui.demonstration') }}</h4>
+      <!-- Details Section - updated to match notes section style -->
+      <div class="technique-section">
+        <div class="section-header" @click="toggleDetails">
+          <h4>
+            <i class="fas fa-chevron-right chevron-icon" :class="{ 'expanded': detailsExpanded }"></i>
+            {{ $t(detailsExpanded ? 'ui.hideDetails' : 'ui.showDetails') }}
+          </h4>
+        </div>
+        <div class="section-content" :class="{ 'expanded': detailsExpanded }">
+          <div class="details-container">
+            <div class="family-info">
+              <span class="family-label">{{ $t('ui.family') }}:</span>
+              <span class="family-name">{{ familyTitle }}</span>
             </div>
-            <iframe
-              :src="'https://www.youtube.com/embed/' + techniqueData.videoId + '?fs=1&rel=0&modestbranding=1&playsinline=0&start=5'"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-              allowfullscreen>
-            </iframe>
-          </div>
 
-          <!-- Exit video section -->
-          <div v-if="techniqueData.exitVideoId" class="video-container">
-            <div class="video-header">
-              <h4>{{ $t('ui.exitTechnique') }}</h4>
+            <div class="description-info">
+              <span class="description-label">{{ $t('ui.description') }}:</span>
+              <span>{{ $t('techniques.' + techniqueData.name.toLowerCase() + '.description') }}</span>
             </div>
-            <iframe
-              :src="'https://www.youtube.com/embed/' + techniqueData.exitVideoId + '?fs=1&rel=0&modestbranding=1&playsinline=0&start=5'"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-              allowfullscreen>
-            </iframe>
+
+            <div v-if="techniqueData.videoId" class="video-container">
+              <div class="video-header">
+                <h4>{{ $t('ui.demonstration') }}</h4>
+              </div>
+              <iframe
+                :src="'https://www.youtube.com/embed/' + techniqueData.videoId + '?fs=1&rel=0&modestbranding=1&playsinline=0&start=5'"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <!-- Exit video section -->
+            <div v-if="techniqueData.exitVideoId" class="video-container">
+              <div class="video-header">
+                <h4>{{ $t('ui.exitTechnique') }}</h4>
+              </div>
+              <iframe
+                :src="'https://www.youtube.com/embed/' + techniqueData.exitVideoId + '?fs=1&rel=0&modestbranding=1&playsinline=0&start=5'"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowfullscreen>
+              </iframe>
+            </div>
           </div>
         </div>
       </div>
