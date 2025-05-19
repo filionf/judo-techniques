@@ -109,10 +109,10 @@ const TechniqueDetailPage = {
       }
     },
     loadNote() {
-      this.noteText = appState.notes.getNote(this.techniqueId);
+      this.noteText = appState.notes.getNote(this.technique.toLowerCase());
     },
     saveNote() {
-      appState.notes.saveNote(this.techniqueId, this.noteText);
+      appState.notes.saveNote(this.technique.toLowerCase(), this.noteText);
     },
     toggleNotes() {
       this.showNotes = !this.showNotes;
@@ -122,9 +122,10 @@ const TechniqueDetailPage = {
     },
   },
   watch: {
-    // Watch for changes to the technique or family
+    // Watch for changes to the technique
     technique() {
       this.updateFavoriteStatus();
+      this.loadNote(); // Add this line to reload notes when technique changes
     },
     family() {
       this.updateFavoriteStatus();
