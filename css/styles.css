@@ -632,4 +632,21 @@ footer {
     width: 24px; /* Approximate width of back button */
     display: block;
   }
+
+  /* Make technique detail page visually appear full-height on mobile */
+  .technique-detail-page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Remove box-shadow and change background on mobile */
+  main {
+    background-color: white;
+  }
+
+  .technique-page {
+    box-shadow: none;
+    background-color: white;
+  }
 }
