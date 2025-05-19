@@ -24,7 +24,7 @@ This application helps judo practitioners prepare for their Shodan (first-degree
 
 ### View Online
 
-Visit the GitHub Pages site at: [https://YOUR-USERNAME.github.io/judo-techniques](https://YOUR-USERNAME.github.io/judo-techniques)
+Visit the GitHub Pages site at: [https://filionf.github.io/judo-techniques](https://filionf.github.io/judo-techniques)
 
 ### Run Locally
 
@@ -75,13 +75,11 @@ This project is configured to be easily deployed to GitHub Pages:
 1. Push your code to GitHub
 2. Go to your repository settings
 3. Under GitHub Pages, select the main branch as source
-4. Your site will be published at https://YOUR-USERNAME.github.io/judo-techniques
+4. Your site will be published at https://filionf.github.io/judo-techniques
 
 ## Future Enhancements
 
-- Add more technique videos
 - Include search functionality
-- Add filtering options
 - Implement a quiz/test feature for exam preparation
 
 ## License
@@ -90,5 +88,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgements
 
-- Judo Canada for the instructional videos
+- Kodokan for the instructional videos
 - All judo instructors who have contributed to preserving these techniques
