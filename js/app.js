@@ -85,3 +85,7 @@ router.afterEach((to, from) => {
     document.body.classList.remove("is-home");
   }
 });
+
+// Import and register service worker
+import { registerServiceWorker } from './sw-register.js';
+registerServiceWorker();

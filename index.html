@@ -19,9 +19,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <!-- Vue 3 CDN -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="https://unpkg.com/vue-router@4"></script>
-    <script src="https://unpkg.com/vue-i18n@11"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.prod.js"></script>
+    <script src="https://unpkg.com/vue-i18n@9/dist/vue-i18n.global.prod.js"></script>
   </head>
   <body>
     <div id="app">
@@ -30,7 +30,6 @@
 
     <script src="js/i18n/fr.js"></script>
     <script src="js/i18n/en.js"></script>
-    <script src="js/i18n.js"></script>
     <script src="js/techniques-data.js"></script>
     <script src="js/techniques.js"></script>
     <script src="js/state.js"></script>
@@ -40,6 +39,6 @@
     <script src="js/technique-family-component.js"></script>
     <script src="js/header-component.js"></script>
     <script src="js/root-component.js"></script>
-    <script src="js/app.js"></script>
+    <script type="module" src="js/app.js"></script>
   </body>
 </html>

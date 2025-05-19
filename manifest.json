@@ -15,5 +15,8 @@
   ],
   "theme_color": "#c73030",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "start_url": "/index.html",
+  "scope": "/",
+  "description": "A reference guide for Judo techniques."
 }

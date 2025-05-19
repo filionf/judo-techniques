@@ -496,6 +496,47 @@ footer {
   display: none; /* Hidden by default, shown on mobile */
 }
 
+/* Update notification toast */
+.update-notification {
+  position: fixed;
+  bottom: -100px;
+  left: 0;
+  right: 0;
+  background-color: #c73030;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+}
+
+.update-notification p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.update-notification button {
+  background-color: white;
+  color: #c73030;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.update-notification.visible {
+  transform: translateY(-100px);
+}
+
+.update-notification.hidden {
+  transform: translateY(100px);
+}
+
 /* Responsive styles */
 @media screen and (max-width: 767px) {
   .header-back-btn {
