@@ -13,7 +13,7 @@ const RootComponent = {
   template: `
     <header-component></header-component>
     <main>
-      <router-view :level="currentLevel"></router-view>
+      <router-view :level="currentLevel" :key="$route.fullPath"></router-view>
     </main>
     <footer>
       <p>&copy; 2025 Judo Reference - Francis Filion</p>

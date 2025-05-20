@@ -145,11 +145,18 @@ const techniqueUtils = {
     appState.randomTechniques.addShownTechnique(randomTechnique.name);
 
     const currentRoute = router.currentRoute.value;
-    const isDetailPage = currentRoute.params.technique;
-    const techniqueUrl = `/technique/${encodeURIComponent(
-      randomTechnique.name.toLowerCase()
-    )}`;
-    router.push(techniqueUrl);
+    const isDetailPage = currentRoute.name === "TechniqueDetail";
+    if (isDetailPage) {
+      router.replace({
+        name: "TechniqueDetail",
+        params: { technique: randomTechnique.name.toLowerCase() },
+      });
+    } else {
+      router.push({
+        name: "TechniqueDetail",
+        params: { technique: randomTechnique.name.toLowerCase() },
+      });
+    }
 
     return randomTechnique;
   },

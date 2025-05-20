@@ -27,10 +27,6 @@ const TechniqueFamilyPage = {
         this.currentLevels
       );
     },
-    showFamily() {
-      // Hide the list if a technique detail is being viewed
-      return !this.$route.params.technique;
-    },
   },
   methods: {
     goToRandomTechnique() {
@@ -56,7 +52,7 @@ const TechniqueFamilyPage = {
   },
   template: `
     <div class="technique-page">
-      <div v-if="showFamily">
+      <div>
         <div class="navigation-links">
           <router-link :to="'/'"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> {{ $t('ui.home') }}</router-link>
         </div>
@@ -91,7 +87,6 @@ const TechniqueFamilyPage = {
           </router-link>
         </div>
       </div>
-      <router-view v-if="!showFamily"></router-view>
     </div>
   `,
 };
