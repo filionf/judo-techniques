@@ -115,7 +115,7 @@ const techniqueUtils = {
       );
     }
 
-    console.log("Previously shown techniques:", randomlyShownTechniques);
+    // console.log("Previously shown techniques:", randomlyShownTechniques);
 
     // Reset if all techniques have been shown
     if (randomlyShownTechniques.length >= availableTechniques.length) {
@@ -139,32 +139,17 @@ const techniqueUtils = {
       return null;
     }
 
-    console.log("Selected random technique:", randomTechnique.name);
+    // console.log("Selected random technique:", randomTechnique.name);
 
     // Add to shown list using state management
     appState.randomTechniques.addShownTechnique(randomTechnique.name);
 
-    // Check if we're currently on a technique detail page
     const currentRoute = router.currentRoute.value;
-    const isDetailPage =
-      currentRoute.params.family && currentRoute.params.technique;
-
-    // Either replace or push based on current location
-    if (isDetailPage) {
-      // On a detail page, replace the current route
-      router.replace(
-        `/${randomTechnique.family}/${encodeURIComponent(
-          randomTechnique.name.toLowerCase()
-        )}`
-      );
-    } else {
-      // Not on a detail page, push a new route
-      router.push(
-        `/${randomTechnique.family}/${encodeURIComponent(
-          randomTechnique.name.toLowerCase()
-        )}`
-      );
-    }
+    const isDetailPage = currentRoute.params.technique;
+    const techniqueUrl = `/technique/${encodeURIComponent(
+      randomTechnique.name.toLowerCase()
+    )}`;
+    router.push(techniqueUrl);
 
     return randomTechnique;
   },

@@ -19,37 +19,22 @@ const routes = [
   {
     path: "/favorites",
     component: FavoritesComponent,
+    name: "Favorites",
   },
   {
     path: "/:family",
     component: TechniqueFamilyPage,
     name: "TechniqueFamily",
     props: true,
-    children: [
-      {
-        path: ":technique",
-        component: TechniqueDetailPage,
-        name: "TechniqueDetail",
-        props: true,
-      },
-    ],
+  },
+  // Technique detail as a separate top-level route
+  {
+    path: "/technique/:technique",
+    component: TechniqueDetailPage,
+    name: "TechniqueDetail",
+    props: true,
   },
 ];
-
-routes.forEach((route) => {
-  // Only add technique detail as a child for technique families
-  if (route.name !== "Home") {
-    if (!route.children) {
-      route.children = [];
-    }
-
-    route.children.push({
-      path: ":id", // nested under the family route, e.g. '/te-waza/:id'
-      component: TechniqueDetailPage,
-      name: route.name + "Detail",
-    });
-  }
-});
 
 const router = VueRouter.createRouter({
   history: VueRouter.createWebHashHistory(),
@@ -87,5 +72,5 @@ router.afterEach((to, from) => {
 });
 
 // Import and register service worker
-import { registerServiceWorker } from './sw-register.js';
+import { registerServiceWorker } from "./sw-register.js";
 registerServiceWorker();

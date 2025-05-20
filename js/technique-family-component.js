@@ -82,7 +82,7 @@ const TechniqueFamilyPage = {
           <router-link
             v-for="technique in techniques"
             :key="technique.name"
-            :to="'/' + family + '/' + encodeURIComponent(technique.name.toLowerCase())"
+            :to="'/technique/' + encodeURIComponent(technique.name.toLowerCase())"
             class="technique-card"
           >
             <div>
