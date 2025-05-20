@@ -1,4 +1,4 @@
-const APP_VERSION = "1.1.2"; // Increment version to force update
+const APP_VERSION = "1.1.3"; // Increment version to force update
 const CACHE_NAME = `judo-reference-cache-v${APP_VERSION}`;
 const ASSETS_TO_CACHE = [
   "/",

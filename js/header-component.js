@@ -50,7 +50,7 @@ const HeaderComponent = {
     },
     // Add a method to go back
     goBack() {
-      window.history.back();
+      this.$router.back();
     },
     getSelectedText() {
       const count = this.selectedLevels.length;
@@ -140,10 +140,11 @@ const HeaderComponent = {
   template: `
     <header>
       <div class="header-content">
-        <!-- Back button in header (visible on mobile) -->
+        <!-- Back button in header (visible on mobile) or invisible spacer -->
         <button v-if="showBackButton" @click="goBack" class="header-back-btn">
           <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
         </button>
+        <div v-else class="header-back-spacer"></div>
 
         <h1>{{ $t('ui.title') }}</h1>
         <div class="level-selector">

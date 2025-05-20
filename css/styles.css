@@ -29,7 +29,6 @@ main {
 header {
   background-color: #c73030;
   color: white;
-  padding: 0.5rem;
   text-align: center;
 }
 
@@ -41,6 +40,7 @@ header {
 }
 
 .header-content h1 {
+  padding: 0.5rem;
   font-size: 1.5rem;
 }
 
@@ -465,16 +465,26 @@ footer {
 }
 
 /* Header back button */
+.header-back-btn,
+.header-back-spacer {
+  min-width: 46px;
+  min-height: 46px;
+  justify-self: start;
+  display: none;
+}
+
 .header-back-btn {
-  background: none;
+  padding: 10px;
+  background: transparent;
   border: none;
   color: white;
-  font-size: 1.2rem;
   cursor: pointer;
-  padding: 5px;
-  padding-left: 0;
-  margin-left: 0;
-  display: none; /* Hidden by default, shown on mobile */
+  font-size: 20px;
+  touch-action: manipulation;
+}
+
+.header-back-spacer {
+  visibility: hidden;
 }
 
 /* Update notification toast */
@@ -589,8 +599,11 @@ footer {
 
 /* Responsive styles */
 @media screen and (max-width: 767px) {
-  .header-back-btn {
-    display: block; /* Show back button in header on mobile */
+  .header-back-btn,
+  .header-back-spacer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Only hide the back link inside navigation-links, not the entire container */
@@ -613,24 +626,12 @@ footer {
 
   .header-content h1 {
     font-size: 1.2rem;
-    text-align: center;
+    text-align: left;
   }
 
   .level-selector-btn {
     padding: 4px 8px;
     font-size: 0.8rem;
-  }
-
-  /* Add this new rule to fix home page header alignment */
-  body.is-home .header-content {
-    grid-template-columns: 0 1fr auto; /* Set first column width to 0 on home page */
-  }
-
-  /* Or alternatively, keep the back button space but make it invisible */
-  body.is-home .header-content::before {
-    content: "";
-    width: 24px; /* Approximate width of back button */
-    display: block;
   }
 
   /* Make technique detail page visually appear full-height on mobile */

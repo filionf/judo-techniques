@@ -62,7 +62,7 @@ const TechniqueDetailPage = {
 
     goBack() {
       // Use browser history to go back
-      window.history.back();
+      this.$router.back();
     },
 
     goToNextRandomTechnique() {
