@@ -66,6 +66,8 @@ const TechniqueDetailPage = {
     goToNextRandomTechnique() {
       // Reset details expanded state before navigating
       this.detailsExpanded = false;
+      // Also reset notes expanded state
+      this.showNotes = false;
 
       // Get current random mode - returns either "global", "favorites", or the family name
       const currentMode = appState.randomTechniques.getCurrentMode();
