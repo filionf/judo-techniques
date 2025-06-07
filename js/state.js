@@ -2,8 +2,8 @@
  * Central state management for the Judo app
  */
 const appState = {
-  // Current belt levels - default to ["shodan"] (first degree black belt)
-  currentLevels: ["shodan"],
+  // Current belt levels - default to all black belt levels
+  currentLevels: ["shodan", "nidan", "sandan"],
 
   // Available levels (belt ranks)
 
@@ -241,7 +241,7 @@ const appState = {
      * @returns {string} Note text or empty string if no note exists
      */
     getNote(techniqueId) {
-      return localStorage.getItem(this.getNoteKey(techniqueId)) || '';
+      return localStorage.getItem(this.getNoteKey(techniqueId)) || "";
     },
 
     /**
@@ -261,7 +261,7 @@ const appState = {
         new CustomEvent("note-changed", {
           detail: {
             techniqueId: techniqueId,
-            hasNote: this.hasNote(techniqueId)
+            hasNote: this.hasNote(techniqueId),
           },
         })
       );
@@ -274,8 +274,8 @@ const appState = {
      */
     hasNote(techniqueId) {
       const note = localStorage.getItem(this.getNoteKey(techniqueId));
-      return note !== null && note.trim() !== '';
-    }
+      return note !== null && note.trim() !== "";
+    },
   },
 };
 
