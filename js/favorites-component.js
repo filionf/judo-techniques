@@ -57,7 +57,7 @@ const FavoritesComponent = {
             <router-link
               v-for="technique in favoriteTechniques"
               :key="technique.name"
-              :to="'/' + technique.family + '/' + encodeURIComponent(technique.name.toLowerCase())"
+              :to="'/technique/' + encodeURIComponent(technique.name.toLowerCase())"
               class="technique-card favorite-technique"
             >
               <div>
