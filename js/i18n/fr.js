@@ -54,6 +54,20 @@ const fr = {
     techniqueCount: "{count} techniques",
     notes: "Notes",
     notesPlaceholder: "Ajoutez vos notes ici...",
+    katas: {
+      title: "Katas",
+      homeLink: "Katas",
+      description:
+        "Les katas sont des formes codifiées, exécutées par tori et uke, qui préservent les principes du judo. Chaque kata indique les grades pour lesquels il est requis.",
+      requiredFor: "Requis pour",
+      pdf: "Document de référence (PDF)",
+    },
+    belt: {
+      title: "Comment attacher sa ceinture",
+      homeLink: "Attacher sa ceinture",
+      intro:
+        "La ceinture (obi) fait deux fois le tour de la taille et se noue devant, les deux bouts de même longueur. La championne olympique Rafaela Silva montre comment, étape par étape.",
+    },
     levels: {
       noLevels: "Aucun niveau",
       allLevels: "Tous les niveaux",
@@ -61,6 +75,8 @@ const fr = {
       shodan: "Shodan",
       nidan: "Nidan",
       sandan: "Sandan",
+      yondan: "Yondan",
+      godan: "Godan",
       yellow: "Jaune",
       "yellow/orange": "Jaune/Orange",
       orange: "Orange",
@@ -96,6 +112,43 @@ const fr = {
     },
     description:
       "Le Judo (柔道, jūdō) est un art martial japonais moderne, qui a vu le jour au Japon à la fin du 19ème siècle. Sa caractéristique la plus marquante est son élément compétitif, où l'objectif est soit de projeter ou de faire tomber un adversaire au sol, de l'immobiliser ou de le maîtriser avec une immobilisation, ou de forcer un adversaire à abandonner avec une clé articulaire ou un étranglement.",
+  },
+  katas: {
+    "nage-no-kata": {
+      subtitle: "Formes de projection",
+      description:
+        "Quinze projections en cinq groupes de trois (te-waza, koshi-waza, ashi-waza, masutemi-waza et yoko-sutemi-waza), chacune exécutée à droite et à gauche.",
+    },
+    "katame-no-kata": {
+      subtitle: "Formes de contrôle",
+      description:
+        "Quinze techniques au sol en trois groupes de cinq : immobilisations (osaekomi-waza), étranglements (shime-waza) et clés articulaires (kansetsu-waza).",
+    },
+    "kime-no-kata": {
+      subtitle: "Formes de décision",
+      description:
+        "Vingt techniques de self-défense contre des attaques à mains nues et armées (poignard et sabre) : huit à genoux (idori) et douze debout (tachiai).",
+    },
+    "ju-no-kata": {
+      subtitle: "Formes de souplesse",
+      description:
+        "Quinze techniques en trois séries de cinq, exécutées lentement et sans chute, qui illustrent le principe de céder pour vaincre la force.",
+    },
+    "kodokan-goshin-jutsu": {
+      subtitle: "Self-défense du Kodokan",
+      description:
+        "Vingt et une techniques modernes de self-défense créées en 1956 : douze contre des attaques à mains nues et neuf contre un couteau, un bâton ou un pistolet.",
+    },
+    "itsutsu-no-kata": {
+      subtitle: "Les cinq formes",
+      description:
+        "Cinq formes, créées par Jigoro Kano, qui expriment les principes d'énergie et de mouvement à travers des phénomènes naturels comme les vagues et les tourbillons.",
+    },
+    "koshiki-no-kata": {
+      subtitle: "Formes anciennes",
+      description:
+        "Vingt et une techniques du Kito-ryu jujutsu, représentant le combat entre guerriers en armure : quatorze dans la série omote et sept dans la série ura.",
+    },
   },
   techniques: {
     // Te-waza

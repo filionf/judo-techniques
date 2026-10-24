@@ -420,6 +420,15 @@ footer {
   color: #f5bb2d;
 }
 
+.home-link i {
+  color: #c73030;
+}
+
+.kata-grades {
+  color: #666;
+  font-size: 0.9rem;
+}
+
 .favorites-badge {
   position: absolute;
   top: -5px;

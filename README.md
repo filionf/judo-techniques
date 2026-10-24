@@ -16,6 +16,8 @@ This application helps judo practitioners prepare for their Shodan (first-degree
 - **Technique Categories**: Browse techniques by their classification (hand, hip, foot, sacrifice techniques, etc.)
 - **Detailed Information**: Each technique includes its Japanese name and English description
 - **Video Demonstrations**: Selected techniques include embedded YouTube instructional videos
+- **Katas**: The seven Kodokan katas with official Kodokan demonstration videos, required grades, and Judo Québec reference documents
+- **Tie your belt**: A short video showing how to tie a judo belt
 - **Responsive UI**: Works on desktop and mobile devices
 
 ## Getting Started
@@ -64,8 +66,9 @@ Visit the site at: [https://judo.francisfilion.com](https://judo.francisfilion.c
   - `app.js` - Main Vue application and router setup
   - `state.js` - App state (levels, favorites, notes) persisted to localStorage
   - `techniques-data.js` - Database of judo techniques and family videos
+  - `katas-data.js` - Katas (videos, grades, reference PDFs) and the belt-tying video
   - `techniques.js` - Technique filtering and random-technique helpers
-  - `*-component.js` - Page components (home, family, technique detail, favorites, header, root)
+  - `*-component.js` - Page components (home, family, technique detail, favorites, katas, belt, header, root)
   - `i18n/` - English and French translations
 - `sw.js` - Service worker for offline caching (bump `APP_VERSION` on each release)
 

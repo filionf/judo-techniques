@@ -22,6 +22,22 @@ const routes = [
     name: "Favorites",
   },
   {
+    path: "/katas",
+    component: KataListComponent,
+    name: "Katas",
+  },
+  {
+    path: "/kata/:kata",
+    component: KataDetailComponent,
+    name: "KataDetail",
+    props: true,
+  },
+  {
+    path: "/belt",
+    component: BeltComponent,
+    name: "Belt",
+  },
+  {
     path: "/:family",
     component: TechniqueFamilyPage,
     name: "TechniqueFamily",

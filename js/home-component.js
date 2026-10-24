@@ -87,6 +87,14 @@ const HomeComponent = {
           <i class="fas fa-star"></i> {{ $t('ui.favorites.viewAll') }}
           <span v-if="hasFavorites" class="favorites-badge"></span>
         </router-link>
+
+        <router-link to="/katas" class="favorites-link home-link">
+          <i class="fas fa-scroll"></i> {{ $t('ui.katas.homeLink') }}
+        </router-link>
+
+        <router-link to="/belt" class="favorites-link home-link">
+          <i class="fas fa-ribbon"></i> {{ $t('ui.belt.homeLink') }}
+        </router-link>
       </div>
 
       <div class="family-list">

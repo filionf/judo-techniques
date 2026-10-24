@@ -59,6 +59,8 @@ const en = {
       shodan: "Shodan",
       nidan: "Nidan",
       sandan: "Sandan",
+      yondan: "Yondan",
+      godan: "Godan",
       yellow: "Yellow",
       "yellow/orange": "Yellow/Orange",
       orange: "Orange",
@@ -74,6 +76,20 @@ const en = {
     techniqueCount: "{count} techniques",
     notes: "Notes",
     notesPlaceholder: "Add your notes here...",
+    katas: {
+      title: "Katas",
+      homeLink: "Katas",
+      description:
+        "Kata are prearranged forms, performed by tori and uke, that preserve the principles of judo. Each kata lists the grades for which it is required.",
+      requiredFor: "Required for",
+      pdf: "Reference document (PDF, in French)",
+    },
+    belt: {
+      title: "How to tie your belt",
+      homeLink: "Tie your belt",
+      intro:
+        "The belt (obi) goes twice around the waist and is tied in front so both ends hang at the same length. Olympic champion Rafaela Silva shows how, step by step.",
+    },
     favorites: {
       title: "Favorites",
       yourFavorites: "Your Favorite Techniques",
@@ -95,6 +111,43 @@ const en = {
     },
     description:
       "Judo (柔道, jūdō) is a modern Japanese martial art, which originated in Japan in the late 19th century. Its most prominent feature is its competitive element, where the objective is either to throw or take down one's opponent to the ground, immobilize or otherwise subdue one's opponent with a pin, or force an opponent to submit with a joint lock or a choke.",
+  },
+  katas: {
+    "nage-no-kata": {
+      subtitle: "Forms of throwing",
+      description:
+        "Fifteen throws in five groups of three (te-waza, koshi-waza, ashi-waza, masutemi-waza and yoko-sutemi-waza), each performed on the right and the left.",
+    },
+    "katame-no-kata": {
+      subtitle: "Forms of grappling",
+      description:
+        "Fifteen ground techniques in three groups of five: holds (osaekomi-waza), strangles (shime-waza) and joint locks (kansetsu-waza).",
+    },
+    "kime-no-kata": {
+      subtitle: "Forms of decision",
+      description:
+        "Twenty self-defence techniques against unarmed and armed attacks (dagger and sword): eight kneeling (idori) and twelve standing (tachiai).",
+    },
+    "ju-no-kata": {
+      subtitle: "Forms of gentleness",
+      description:
+        "Fifteen techniques in three sets of five, performed slowly and without falls, demonstrating the principle of yielding to overcome strength.",
+    },
+    "kodokan-goshin-jutsu": {
+      subtitle: "Kodokan self-defence",
+      description:
+        "Twenty-one modern self-defence techniques created in 1956: twelve against unarmed attacks and nine against a knife, a stick or a pistol.",
+    },
+    "itsutsu-no-kata": {
+      subtitle: "Forms of five",
+      description:
+        "Five forms, created by Jigoro Kano, expressing the principles of energy and movement through natural phenomena such as waves and whirlpools.",
+    },
+    "koshiki-no-kata": {
+      subtitle: "Antique forms",
+      description:
+        "Twenty-one techniques from Kito-ryu jujutsu, representing combat between armoured warriors: fourteen in the omote set and seven in the ura set.",
+    },
   },
   techniques: {
     // Te-waza

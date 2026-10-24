@@ -1,4 +1,4 @@
-const APP_VERSION = "1.2.0"; // Increment version to force update
+const APP_VERSION = "1.3.0"; // Increment version to force update
 const CACHE_NAME = `judo-reference-cache-v${APP_VERSION}`;
 const ASSETS_TO_CACHE = [
   "/",
@@ -9,6 +9,10 @@ const ASSETS_TO_CACHE = [
   "/js/state.js",
   "/js/techniques.js",
   "/js/techniques-data.js",
+  "/js/katas-data.js",
+  "/js/kata-list-component.js",
+  "/js/kata-detail-component.js",
+  "/js/belt-component.js",
   "/js/favorites-component.js",
   "/js/home-component.js",
   "/js/technique-detail-component.js",
