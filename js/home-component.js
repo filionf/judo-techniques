@@ -73,7 +73,7 @@ const HomeComponent = {
     <div class="home-page">
       <h2>{{ $t('home.welcome') }}</h2>
       <p>{{ $t('home.description') }}</p>
-      <p>To use:</p>
+      <p>{{ $t('home.instructions.title') }}</p>
         1. {{ $t('home.instructions.selectLevel') }}<br>
         2. {{ $t('home.instructions.findTechnique') }}<br>
         3. {{ $t('home.instructions.randomButton') }}<br>
@@ -93,7 +93,7 @@ const HomeComponent = {
         <router-link v-for="category in categories" :key="category.id" :to="'/' + category.id" class="technique-family-card">
           <div>
             <h2>{{ category.title }}</h2>
-            <p>{{ category.techniqueCount }} techniques</p>
+            <p>{{ $t('ui.techniqueCount', { count: category.techniqueCount }) }}</p>
           </div>
         </router-link>
       </div>

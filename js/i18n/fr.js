@@ -51,6 +51,9 @@ const fr = {
     randomTechnique: "Technique aléatoire",
     demonstration: "Démonstration",
     exitTechnique: "Technique de sortie",
+    techniqueCount: "{count} techniques",
+    notes: "Notes",
+    notesPlaceholder: "Ajoutez vos notes ici...",
     levels: {
       noLevels: "Aucun niveau",
       allLevels: "Tous les niveaux",
@@ -72,9 +75,10 @@ const fr = {
       title: "Favoris",
       yourFavorites: "Vos Techniques Favorites",
       randomFavorite: "Favori Aléatoire",
-      viewAll: "View Favorites",
-      noFavorites: "You don't have any favorites yet.",
-      addFavoritesInstruction: "Star techniques to add them to your favorites.",
+      viewAll: "Voir les favoris",
+      noFavorites: "Vous n'avez pas encore de favoris.",
+      addFavoritesInstruction:
+        "Ajoutez une étoile aux techniques pour les ajouter à vos favoris.",
     },
     back: "Retour",
     family: "Famille",

@@ -188,15 +188,15 @@ const TechniqueDetailPage = {
           <div class="section-header" @click="toggleNotes">
             <h4>
               <i class="fas fa-chevron-right chevron-icon" :class="{ 'expanded': showNotes }"></i>
-              Notes
-              <i v-if="noteText.trim()" class="fas fa-sticky-note note-icon"></i>
+              {{ $t('ui.notes') }}
+              <i v-if="noteText.trim()" class="fas fa-note-sticky note-icon"></i>
             </h4>
           </div>
           <div class="section-content" :class="{ 'expanded': showNotes }">
             <textarea
               v-model="noteText"
               @blur="saveNote"
-              placeholder="Add your notes here..."
+              :placeholder="$t('ui.notesPlaceholder')"
               class="note-textarea"
             ></textarea>
           </div>

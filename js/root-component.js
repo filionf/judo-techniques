@@ -1,7 +1,8 @@
 const RootComponent = {
   data() {
     return {
-      currentLevel: localStorage.getItem("judo-selected-level") || "shodan"
+      currentLevel: localStorage.getItem("judo-selected-level") || "shodan",
+      currentYear: new Date().getFullYear()
     };
   },
   methods: {
@@ -16,7 +17,7 @@ const RootComponent = {
       <router-view :level="currentLevel" :key="$route.fullPath"></router-view>
     </main>
     <footer>
-      <p>&copy; 2025 Judo Reference - Francis Filion</p>
+      <p>&copy; 2025–{{ currentYear }} Judo Reference - Francis Filion</p>
     </footer>
   `
 };

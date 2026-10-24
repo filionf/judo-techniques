@@ -71,6 +71,9 @@ const en = {
     },
     demonstration: "Demonstration",
     exitTechnique: "Exit Technique",
+    techniqueCount: "{count} techniques",
+    notes: "Notes",
+    notesPlaceholder: "Add your notes here...",
     favorites: {
       title: "Favorites",
       yourFavorites: "Your Favorite Techniques",

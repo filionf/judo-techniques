@@ -2,8 +2,6 @@
 
 A web application for Shodan exam preparation, featuring categorized judo techniques with descriptions and video demonstrations from Judo Canada.
 
-![Judo Techniques](Techniques.jpg)
-
 ## Overview
 
 This application helps judo practitioners prepare for their Shodan (first-degree black belt) examination by providing a comprehensive reference of judo techniques organized by category. The app includes:
@@ -24,14 +22,14 @@ This application helps judo practitioners prepare for their Shodan (first-degree
 
 ### View Online
 
-Visit the GitHub Pages site at: [https://filionf.github.io/judo-techniques](https://filionf.github.io/judo-techniques)
+Visit the site at: [https://judo.francisfilion.com](https://judo.francisfilion.com)
 
 ### Run Locally
 
 1. Clone the repository:
 
    ```
-   git clone https://github.com/YOUR-USERNAME/judo-techniques.git
+   git clone https://github.com/filionf/judo-techniques.git
    ```
 
 2. Navigate to the project directory:
@@ -52,7 +50,8 @@ Visit the GitHub Pages site at: [https://filionf.github.io/judo-techniques](http
 ## Technologies Used
 
 - Vue.js 3 - Frontend framework
-- Vue Router 4 - Navigation/routing
+- Vue Router 5 - Navigation/routing
+- Vue I18n 11 - English/French translations
 - HTML5/CSS3 - Structure and styling
 - FontAwesome - Icons
 - No backend required - all data is stored in JavaScript
@@ -63,19 +62,24 @@ Visit the GitHub Pages site at: [https://filionf.github.io/judo-techniques](http
 - `css/styles.css` - Main stylesheet
 - `js/` - JavaScript files:
   - `app.js` - Main Vue application and router setup
-  - `techniques.js` - Database of judo techniques
-  - `home-component.js` - Home page component
-  - `technique-components.js` - Technique listing and detail components
-- `images/` - Image assets
+  - `state.js` - App state (levels, favorites, notes) persisted to localStorage
+  - `techniques-data.js` - Database of judo techniques and family videos
+  - `techniques.js` - Technique filtering and random-technique helpers
+  - `*-component.js` - Page components (home, family, technique detail, favorites, header, root)
+  - `i18n/` - English and French translations
+- `sw.js` - Service worker for offline caching (bump `APP_VERSION` on each release)
+
+Libraries are loaded from CDNs with pinned versions and Subresource Integrity hashes in `index.html`. When upgrading, update the URL and regenerate the hash:
+
+```
+curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A
+```
 
 ## Deployment
 
 This project is configured to be easily deployed to GitHub Pages:
 
-1. Push your code to GitHub
-2. Go to your repository settings
-3. Under GitHub Pages, select the main branch as source
-4. Your site will be published at https://filionf.github.io/judo-techniques
+Pushes to `master` are deployed to GitHub Pages by the workflow in `.github/workflows/static.yml`. The site is served at https://judo.francisfilion.com.
 
 ## Future Enhancements
 
