@@ -74,7 +74,7 @@ Visit the site at: [https://judo.francisfilion.com](https://judo.francisfilion.c
   - `techniques.js` - Technique filtering and random-technique helpers
   - `*-component.js` - Page components (home, family, technique detail, favorites, katas, belt, header, root)
   - `i18n/` - English and French translations
-- `sw.js` - Service worker for offline caching (bump `APP_VERSION` on each release)
+- `sw.js` - Service worker for offline caching. On each release, bump `APP_VERSION` and the matching `?v=` on the local CSS/JS URLs in `index.html` (a new page must never load older files from a cache)
 
 Libraries are loaded from CDNs with pinned versions and Subresource Integrity hashes in `index.html`. When upgrading, update the URL and regenerate the hash:
 

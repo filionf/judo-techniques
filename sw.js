@@ -1,26 +1,31 @@
 const APP_VERSION = "1.4.0"; // Increment version to force update
 const CACHE_NAME = `judo-reference-cache-v${APP_VERSION}`;
-const ASSETS_TO_CACHE = [
-  "/",
-  "/index.html",
+// Files loaded by index.html with "?v=<APP_VERSION>" (keep index.html in sync)
+const VERSIONED_ASSETS = [
   "/css/styles.css",
-  "/js/app.js",
-  "/js/sw-register.js",
-  "/js/state.js",
-  "/js/techniques.js",
+  "/js/i18n/fr.js",
+  "/js/i18n/en.js",
   "/js/techniques-data.js",
   "/js/katas-data.js",
+  "/js/techniques.js",
+  "/js/state.js",
+  "/js/home-component.js",
+  "/js/favorites-component.js",
+  "/js/technique-detail-component.js",
+  "/js/technique-family-component.js",
   "/js/kata-list-component.js",
   "/js/kata-detail-component.js",
   "/js/belt-component.js",
-  "/js/favorites-component.js",
-  "/js/home-component.js",
-  "/js/technique-detail-component.js",
-  "/js/technique-family-component.js",
   "/js/header-component.js",
   "/js/root-component.js",
-  "/js/i18n/en.js",
-  "/js/i18n/fr.js",
+  "/js/app.js",
+].map((path) => `${path}?v=${APP_VERSION}`);
+
+const ASSETS_TO_CACHE = [
+  "/",
+  "/index.html",
+  ...VERSIONED_ASSETS,
+  "/js/sw-register.js",
   "/favicon.ico",
   "/favicon-16x16.png",
   "/favicon-32x32.png",
@@ -39,7 +44,10 @@ self.addEventListener("install", (event) => {
       .open(CACHE_NAME)
       .then((cache) => {
         console.log("Caching app assets");
-        return cache.addAll(ASSETS_TO_CACHE);
+        // Bypass the browser's HTTP cache so every file comes from this release
+        return cache.addAll(
+          ASSETS_TO_CACHE.map((url) => new Request(url, { cache: "reload" }))
+        );
       })
       .then(() => {
         console.log("Skip waiting - forcing activation");
@@ -73,8 +81,9 @@ self.addEventListener("activate", (event) => {
 
 // Fetch event handler
 self.addEventListener("fetch", (event) => {
-  // Skip non-GET requests
+  // Skip non-GET requests and non-web schemes (e.g. browser extensions)
   if (event.request.method !== "GET") return;
+  if (!event.request.url.startsWith("http")) return;
 
   // Skip YouTube resources only
   if (event.request.url.includes("youtube.com")) {

@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
 
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css?v=1.4.0" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
@@ -43,21 +43,23 @@
       <app-root></app-root>
     </div>
 
-    <script src="js/i18n/fr.js"></script>
-    <script src="js/i18n/en.js"></script>
-    <script src="js/techniques-data.js"></script>
-    <script src="js/katas-data.js"></script>
-    <script src="js/techniques.js"></script>
-    <script src="js/state.js"></script>
-    <script src="js/home-component.js"></script>
-    <script src="js/favorites-component.js"></script>
-    <script src="js/technique-detail-component.js"></script>
-    <script src="js/technique-family-component.js"></script>
-    <script src="js/kata-list-component.js"></script>
-    <script src="js/kata-detail-component.js"></script>
-    <script src="js/belt-component.js"></script>
-    <script src="js/header-component.js"></script>
-    <script src="js/root-component.js"></script>
-    <script type="module" src="js/app.js"></script>
+    <!-- Local files carry the app version (keep in sync with APP_VERSION in sw.js)
+         so a new index.html never runs with older files from a cache -->
+    <script src="js/i18n/fr.js?v=1.4.0"></script>
+    <script src="js/i18n/en.js?v=1.4.0"></script>
+    <script src="js/techniques-data.js?v=1.4.0"></script>
+    <script src="js/katas-data.js?v=1.4.0"></script>
+    <script src="js/techniques.js?v=1.4.0"></script>
+    <script src="js/state.js?v=1.4.0"></script>
+    <script src="js/home-component.js?v=1.4.0"></script>
+    <script src="js/favorites-component.js?v=1.4.0"></script>
+    <script src="js/technique-detail-component.js?v=1.4.0"></script>
+    <script src="js/technique-family-component.js?v=1.4.0"></script>
+    <script src="js/kata-list-component.js?v=1.4.0"></script>
+    <script src="js/kata-detail-component.js?v=1.4.0"></script>
+    <script src="js/belt-component.js?v=1.4.0"></script>
+    <script src="js/header-component.js?v=1.4.0"></script>
+    <script src="js/root-component.js?v=1.4.0"></script>
+    <script type="module" src="js/app.js?v=1.4.0"></script>
   </body>
 </html>
