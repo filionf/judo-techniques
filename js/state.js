@@ -24,6 +24,9 @@ const appState = {
     return [...this.availableColoredBelts, ...this.availableBlackBelts];
   },
 
+  // Home page search text, kept while navigating within the session
+  searchQuery: "",
+
   // Get the current levels
   getLevels() {
     return this.currentLevels;

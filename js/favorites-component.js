@@ -60,10 +60,9 @@ const FavoritesComponent = {
               :to="'/technique/' + encodeURIComponent(technique.name.toLowerCase())"
               class="technique-card favorite-technique"
             >
-              <div>
-                <h3>{{ technique.name }}</h3>
-                <span class="technique-family">{{ technique.family }}</span>
-              </div>
+              <h3>{{ technique.name }}</h3>
+              <span class="technique-meaning">{{ $t('techniques.' + technique.name.toLowerCase() + '.description') }}</span>
+              <span class="technique-family">{{ technique.family }}</span>
             </router-link>
           </div>
         </div>

@@ -2,7 +2,8 @@ const TechniqueDetailPage = {
   props: ["technique"],
   data() {
     return {
-      detailsExpanded: false,
+      // Details (description and video) stay hidden in random mode so you can test yourself
+      detailsExpanded: !this.$route.query.random,
       isFavorite: false,
       showNotes: false,
       noteText: "",
@@ -25,7 +26,7 @@ const TechniqueDetailPage = {
       return this.family.toUpperCase();
     },
     randomMode() {
-      return appState.randomTechniques.getCurrentMode();
+      return this.$route.query.random || null;
     },
     inRandomMode() {
       return this.randomMode !== null;
@@ -71,8 +72,8 @@ const TechniqueDetailPage = {
       // Also reset notes expanded state
       this.showNotes = false;
 
-      // Get current random mode - returns either "global", "favorites", or the family name
-      const currentMode = appState.randomTechniques.getCurrentMode();
+      // Current random mode - either "global", "favorites", or the family name
+      const currentMode = this.randomMode;
 
       const options = {
         router: this.$router,
@@ -116,6 +117,7 @@ const TechniqueDetailPage = {
       this.noteText = appState.notes.getNote(this.technique.toLowerCase());
     },
     saveNote() {
+      clearTimeout(this.noteSaveTimer);
       appState.notes.saveNote(this.technique.toLowerCase(), this.noteText);
     },
     toggleNotes() {
@@ -137,10 +139,10 @@ const TechniqueDetailPage = {
       },
       deep: true,
     },
-    // Add watcher for noteText if you want additional behavior when it changes
-    noteText(newValue) {
-      // You could add debounced auto-save here if desired
-      // For now we'll just keep the blur event for saving
+    // Save notes while typing, so nothing is lost if the app is closed
+    noteText() {
+      clearTimeout(this.noteSaveTimer);
+      this.noteSaveTimer = setTimeout(this.saveNote, 500);
     },
   },
   mounted() {
@@ -152,6 +154,9 @@ const TechniqueDetailPage = {
     this.loadNote();
   },
   beforeUnmount() {
+    // Save any pending note change
+    if (this.noteSaveTimer) this.saveNote();
+
     // Remove event listener
     document.removeEventListener("favorites-changed", this.onFavoritesChanged);
   },
@@ -185,14 +190,14 @@ const TechniqueDetailPage = {
 
         <!-- Notes Section -->
         <div class="technique-section">
-          <div class="section-header" @click="toggleNotes">
+          <button class="section-header" @click="toggleNotes" :aria-expanded="showNotes">
             <h4>
-              <i class="fas fa-chevron-right chevron-icon" :class="{ 'expanded': showNotes }"></i>
+              <i class="fas fa-chevron-right chevron-icon" :class="{ 'expanded': showNotes }" aria-hidden="true"></i>
               {{ $t('ui.notes') }}
-              <i v-if="noteText.trim()" class="fas fa-note-sticky note-icon"></i>
+              <i v-if="noteText.trim()" class="fas fa-note-sticky note-icon" aria-hidden="true"></i>
             </h4>
-          </div>
-          <div class="section-content" :class="{ 'expanded': showNotes }">
+          </button>
+          <div class="section-content" :class="{ 'expanded': showNotes }" :inert="!showNotes || null">
             <textarea
               v-model="noteText"
               @blur="saveNote"
@@ -204,13 +209,13 @@ const TechniqueDetailPage = {
 
         <!-- Details Section - updated to match notes section style -->
         <div class="technique-section">
-          <div class="section-header" @click="toggleDetails">
+          <button class="section-header" @click="toggleDetails" :aria-expanded="detailsExpanded">
             <h4>
-              <i class="fas fa-chevron-right chevron-icon" :class="{ 'expanded': detailsExpanded }"></i>
+              <i class="fas fa-chevron-right chevron-icon" :class="{ 'expanded': detailsExpanded }" aria-hidden="true"></i>
               {{ $t(detailsExpanded ? 'ui.hideDetails' : 'ui.showDetails') }}
             </h4>
-          </div>
-          <div class="section-content" :class="{ 'expanded': detailsExpanded }">
+          </button>
+          <div class="section-content" :class="{ 'expanded': detailsExpanded }" :inert="!detailsExpanded || null">
             <div class="details-container">
               <div class="family-info">
                 <span class="family-label">{{ $t('ui.family') }}:</span>

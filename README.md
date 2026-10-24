@@ -13,7 +13,11 @@ This application helps judo practitioners prepare for their Shodan (first-degree
 
 ## Features
 
-- **Technique Categories**: Browse techniques by their classification (hand, hip, foot, sacrifice techniques, etc.)
+- **Technique Categories**: Browse techniques grouped as Nage-waza (throws) and Katame-waza (grappling), each with its English meaning
+- **Search**: Find any technique or kata by name or meaning, with or without hyphens and accents
+- **Random practice**: Quiz yourself on random techniques with the details hidden until you reveal them
+- **Favorites and notes**: Star techniques and keep personal notes, saved in the browser
+- **English and French**: Switch language from the header
 - **Detailed Information**: Each technique includes its Japanese name and English description
 - **Video Demonstrations**: Selected techniques include embedded YouTube instructional videos
 - **Katas**: The seven Kodokan katas with official Kodokan demonstration videos, required grades, and Judo Québec reference documents
@@ -86,7 +90,6 @@ Pushes to `master` are deployed to GitHub Pages by the workflow in `.github/work
 
 ## Future Enhancements
 
-- Include search functionality
 - Implement a quiz/test feature for exam preparation
 
 ## License

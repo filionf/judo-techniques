@@ -56,13 +56,15 @@ const fr = {
     notesPlaceholder: "Ajoutez vos notes ici...",
     katas: {
       title: "Katas",
-      homeLink: "Katas",
+      cardSubtitle: "Les 7 katas du Kodokan",
       description:
         "Les katas sont des formes codifiées, exécutées par tori et uke, qui préservent les principes du judo. Chaque kata indique les grades pour lesquels il est requis.",
       requiredFor: "Requis pour",
       pdf: "Document de référence (PDF)",
     },
+    switchLanguage: "Changer de langue",
     belt: {
+      cardSubtitle: "Guide vidéo",
       title: "Comment attacher sa ceinture",
       homeLink: "Attacher sa ceinture",
       intro:
@@ -77,6 +79,8 @@ const fr = {
       sandan: "Sandan",
       yondan: "Yondan",
       godan: "Godan",
+      selectAll: "Tous",
+      selectNone: "Aucun",
       yellow: "Jaune",
       "yellow/orange": "Jaune/Orange",
       orange: "Orange",
@@ -101,6 +105,17 @@ const fr = {
     description: "Description",
   },
   home: {
+    about: "À propos de ce guide",
+    search: {
+      placeholder: "Rechercher une technique ou un kata",
+      clear: "Effacer la recherche",
+      results: "Aucun résultat | 1 résultat | {count} résultats",
+    },
+    groups: {
+      nageWaza: { title: "Nage-waza", subtitle: "Techniques de projection" },
+      katameWaza: { title: "Katame-waza", subtitle: "Techniques de contrôle" },
+      more: { title: "Plus" },
+    },
     welcome: "Bienvenue dans un guide de référence pour le Judo",
     instructions: {
       title: "Pour utiliser :",

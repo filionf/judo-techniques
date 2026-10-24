@@ -61,6 +61,8 @@ const en = {
       sandan: "Sandan",
       yondan: "Yondan",
       godan: "Godan",
+      selectAll: "All",
+      selectNone: "None",
       yellow: "Yellow",
       "yellow/orange": "Yellow/Orange",
       orange: "Orange",
@@ -78,13 +80,15 @@ const en = {
     notesPlaceholder: "Add your notes here...",
     katas: {
       title: "Katas",
-      homeLink: "Katas",
+      cardSubtitle: "The 7 Kodokan katas",
       description:
         "Kata are prearranged forms, performed by tori and uke, that preserve the principles of judo. Each kata lists the grades for which it is required.",
       requiredFor: "Required for",
       pdf: "Reference document (PDF, in French)",
     },
+    switchLanguage: "Switch language",
     belt: {
+      cardSubtitle: "Video guide",
       title: "How to tie your belt",
       homeLink: "Tie your belt",
       intro:
@@ -100,6 +104,17 @@ const en = {
     },
   },
   home: {
+    about: "About this guide",
+    search: {
+      placeholder: "Search a technique or kata",
+      clear: "Clear search",
+      results: "No results | 1 result | {count} results",
+    },
+    groups: {
+      nageWaza: { title: "Nage-waza", subtitle: "Throwing techniques" },
+      katameWaza: { title: "Katame-waza", subtitle: "Grappling techniques" },
+      more: { title: "More" },
+    },
     welcome: "Welcome to a reference guide for Judo",
     instructions: {
       title: "To use:",

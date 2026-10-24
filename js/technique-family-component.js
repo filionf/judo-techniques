@@ -81,9 +81,8 @@ const TechniqueFamilyPage = {
             :to="'/technique/' + encodeURIComponent(technique.name.toLowerCase())"
             class="technique-card"
           >
-            <div>
-              <h3>{{ technique.name }}</h3>
-            </div>
+            <h3>{{ technique.name }}</h3>
+            <span class="technique-meaning">{{ $t('techniques.' + technique.name.toLowerCase() + '.description') }}</span>
           </router-link>
         </div>
       </div>

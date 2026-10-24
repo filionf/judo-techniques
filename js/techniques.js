@@ -144,20 +144,70 @@ const techniqueUtils = {
     // Add to shown list using state management
     appState.randomTechniques.addShownTechnique(randomTechnique.name);
 
+    // The random mode travels in the URL so that browsing a technique
+    // normally never shows the random "Next" button
+    const target = {
+      name: "TechniqueDetail",
+      params: { technique: randomTechnique.name.toLowerCase() },
+      query: { random: appState.randomTechniques.getCurrentMode() },
+    };
     const currentRoute = router.currentRoute.value;
     const isDetailPage = currentRoute.name === "TechniqueDetail";
     if (isDetailPage) {
-      router.replace({
-        name: "TechniqueDetail",
-        params: { technique: randomTechnique.name.toLowerCase() },
-      });
+      router.replace(target);
     } else {
-      router.push({
-        name: "TechniqueDetail",
-        params: { technique: randomTechnique.name.toLowerCase() },
-      });
+      router.push(target);
     }
 
     return randomTechnique;
+  },
+
+  /**
+   * Normalize text for search: lowercase, no accents, no spaces or hyphens
+   * @param {string} text - Text to normalize
+   * @returns {string} Normalized text
+   */
+  normalizeSearch(text) {
+    return (text || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/[\s-]+/g, "");
+  },
+
+  /**
+   * Search techniques and katas by name or translated meaning
+   * @param {string} query - Search text
+   * @param {Function} t - Translation function
+   * @returns {Array} Results with name, meaning and route, name matches first
+   */
+  search(query, t) {
+    const needle = this.normalizeSearch(query);
+    if (!needle) return [];
+
+    const entries = [
+      ...techniqueData.map((technique) => ({
+        type: "technique",
+        name: technique.name,
+        meaning: t(`techniques.${technique.name.toLowerCase()}.description`),
+        to: "/technique/" + encodeURIComponent(technique.name.toLowerCase()),
+      })),
+      ...kataData.map((kata) => ({
+        type: "kata",
+        name: kata.name,
+        meaning: t(`katas.${kata.id}.subtitle`),
+        to: "/kata/" + kata.id,
+      })),
+    ];
+
+    const nameMatches = entries.filter((entry) =>
+      this.normalizeSearch(entry.name).includes(needle)
+    );
+    const meaningMatches = entries.filter(
+      (entry) =>
+        !nameMatches.includes(entry) &&
+        this.normalizeSearch(entry.meaning).includes(needle)
+    );
+    return [...nameMatches, ...meaningMatches];
   },
 };

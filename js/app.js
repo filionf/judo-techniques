@@ -1,9 +1,12 @@
+// Use the saved language, else the browser's if it is French, else English
+const initialLocale =
+  localStorage.getItem("preferredLanguage") ||
+  (navigator.language.startsWith("fr") ? "fr" : "en");
+document.documentElement.lang = initialLocale;
+
 const i18n = VueI18n.createI18n({
   legacy: false,
-  locale:
-    localStorage.getItem("preferredLanguage") ||
-    navigator.language.split("-")[0] ||
-    "en",
+  locale: initialLocale,
   fallbackLocale: "en",
   messages: { en, fr },
 });
